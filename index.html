@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Singing for the Stats</title>
     <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,16 +15,24 @@
         <div id="hero"></div>
     </header>
     <article>
-        <section class="chapter" id="chapter-1">
+        <section class="chapter" id="chap-1">
             <span class="chapter-number">I</span>
             <section class="description">
                 <h2>Des titres de plus en plus courts</h2>
-                <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des chansons n'a cessé de croire depuis 2018. En effet, le classement Billboard pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean, dans les années 70.</p>
-                <p>Aujourd'hui, la plupart des chansons pop effleurent à peine les 2 minutes 30. C’est en 2018 que la tendance bascule pour des hits à courte durée. Ce phénomène est popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road” et “Panini” ; qui effleurent à peine 2 minutes au total.</p>
+                <div class="description-content">
+                    <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean, dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2 minutes 30.</p>
+                    <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road” et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
+                    En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams au compteur.</p>
+                </div>
             </section>
             <section class="chart">
                 <h3>Évolution de la durée moyenne d’une chanson chaque année (2000-2023)¹</h3>
-                <div>Chart</div>
+                <div class="chart-window">
+                    <span class="window-title">music_duration_evolution</span>
+                    <div class="chart-container">
+                        <canvas id="song-duration" height="640"></canvas>
+                    </div>
+                </div>
             </section>
             <div class="trivia">
                 <div class="trivia card"></div>
@@ -29,5 +40,10 @@
             </div>
         </section>
     </article>
+
+    <!-- CDN & script import -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
+    <script src="./scripts/song-duration.js"></script>
 </body>
 </html>

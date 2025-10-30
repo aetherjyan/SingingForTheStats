@@ -1,0 +1,161 @@
+:root {
+    --Branding-Light-Cyan: #52F3FF;
+    --Branding-Cyan: #00E5FF;
+    --Branding-Cyan-20: rgba(0, 238, 255, 0.20);
+
+    --White-5: rgba(255, 255, 255, 0.05);
+    --Black: #252527;
+    --Black-25: rgba(37, 37, 39, 0.25);
+    --Mid-Grey: #72747D;
+
+    --Grid-Margin: 8rem;
+    --Grid-Gutter: 2.5rem;
+}
+
+#song-duration {
+    background-color: var(--Black);
+}
+
+/* Layout */
+
+body {
+    background-color: var(--Mid-Grey);
+    color: white;
+    font-family: 'Vercetti', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+header {
+    width: 100wv;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--Branding-Cyan, #0EF) 0%, var(--Branding-Pink, #FF5CF1) 100%);
+}
+
+header h1 {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 740px;
+    width: 80%;
+}
+
+article {
+    margin-left: var(--Grid-Margin);
+    margin-right: var(--Grid-Margin);
+    display: grid;
+    /* grid-template-columns: repeat(12, 1fr); */
+    column-gap: var(--Grid-Gutter);
+}
+
+.description-content {
+    display: grid;
+    width: 100%;
+    column-gap: var(--Grid-Gutter);
+    flex-shrink: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.description {
+    margin-bottom: 3rem;
+}
+
+p {
+    margin: 0;
+}
+
+.description h2 {
+    margin-top: .5rem
+}
+
+.chart h3 {
+    grid-column: span 8;
+    text-wrap: balance;
+}
+
+/* .chapter {
+    grid-column: span 12;
+} */
+
+.chart {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--Grid-Gutter);
+}
+
+#chap-1 .chart-window {
+    background-color: var(--Branding-Cyan-20);
+    border-radius: 16px;
+    border: 2px solid var(--Black-25);
+    grid-column: span 10;
+}
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Unbounded', sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 100%;
+    letter-spacing: -1.92px;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    /* line-height: 120%;*/
+    letter-spacing: -1.6px;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.28px;
+}
+
+.window-title {
+    font-size: 16px;
+    letter-spacing: -0.64px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    position: relative;
+    display: block;
+}
+
+.chapter-number,
+.window-title {
+    font-family: "Geist Mono";
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+.chapter-number {
+    color: var(--Branding-Cyan);
+    font-family: "Geist Mono";
+    font-size: 24px;
+    letter-spacing: -0.96px;
+}
+
+/* Styling */
+
+#song-duration {
+    border-radius: 8px;
+}
+
+#chap-1 .chart-window {
+    padding: 1rem;
+}
