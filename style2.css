@@ -1,0 +1,113 @@
+body {
+  background-color: #325060;
+  margin: 100px 200px;
+  font-family: "Vercetti", sans-serif;
+  color: white;
+}
+
+h1 {
+  font-size: 32px;
+  font-family: 'Arial Black', sans-serif;
+  color: #00EEFF;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: 44px;
+  font-family: 'Unbounded', sans-serif;
+  color: white;
+  margin-top: 10px;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: 'Unbounded', sans-serif;
+  margin: 0;
+}
+
+
+
+h3 {
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.paragraphe {
+  display: grid;
+  grid-template-columns: 48% 48%;
+  gap: 4%;
+  margin: 40px 0;
+}
+
+.paragraphe p {
+  text-align: justify;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.graphique-titre {
+  display: grid;
+  gap: 16px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.graphique-conteneur {
+  display: grid;
+  grid-template-columns: 60% 35%;
+  gap: 24px;
+  align-items: start;
+}
+
+.fond_du_graphique {
+  position: relative;
+  width: 500px;
+  height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.fond-svg {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;  
+  height: 125%; 
+  opacity: 0.4; 
+  z-index: 0;   
+}
+
+canvas {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.titre-droite {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+@media (max-width: 1000px) {
+  body {
+    margin: 40px;
+  }
+
+  .graphique-conteneur {
+    grid-template-columns: 1fr;
+  }
+
+  .canvas-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
