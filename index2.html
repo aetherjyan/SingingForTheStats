@@ -1,5 +1,3 @@
-meilleur code pour linstant 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,39 +10,33 @@ meilleur code pour linstant
 </head>
 <body>
 
-
   <!-- titre de ma partie -->
   <h1>Ⅱ</h1>
   <h2>La course aux <br>collaborations</h2>
 
-
   <!-- paragraphe -->
   <div class="paragraphe">
     <p class="gauche">
-      L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution exponentielle des featuring musicaux.
-      Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs artistes. Les feat. sont aujourd’hui utilisé à des fins marketing.
+      L’un des plus grands changements dans l’industrie musicale a aussi été l’évolution exponentielle des featuring musicaux. 
+      Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs artistes. Les feat. sont aujourd’hui utilisés à des fins marketing.
     </p>
     <p class="droite">
       En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de chaque interprète va profiter aux maisons de disques et aux artistes.  
-      Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en notoriété.
+      Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en notoriété. 
       Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent les collaborations dans les charts.
     </p>
   </div>
 
-
   <!-- partie graphique -->
   <div class="graphique-titre">
 
-
     <!-- titre au-dessus du graphique -->
     <h5>TOTAL_FT_RATIO_EVOLUTION</h5>
-
 
     <!-- conteneur pour graphique + sous-titre à droite -->
     <div class="graphique-conteneur">
       <!-- Graphique à gauche -->
       <canvas id="graphique" width="400" height="200"></canvas>
-
 
       <!-- sous-titre ou description à droite -->
       <div class="titre-droite">
@@ -52,9 +44,7 @@ meilleur code pour linstant
       </div>
     </div>
 
-
   </div>
-
 
   <style>
     /* style de la page */
@@ -65,7 +55,6 @@ meilleur code pour linstant
       font-family: "Vercetti", sans-serif;
       color: white;
     }
-
 
     /* partie titre */
     h1 {
@@ -80,43 +69,37 @@ meilleur code pour linstant
       text-align: left;
     }
 
-
-
-
-    h5{
+    h5 {
       color: black;
     }
+
     h3, h5 {
       font-family: "Unbounded";
       margin: 0;
     }
 
-
     /* style des paragraphes  */
     .paragraphe {
-      display: grid;              
+      display: grid;               
       grid-template-columns: 48% 48%;
-      gap: 4%;                      
-      margin-top: 30px;            
-      margin-bottom: 30px;          
+      gap: 4%;                       
+      margin-top: 30px;             
+      margin-bottom: 30px;           
     }
-
 
     .paragraphe p {
-      text-align: justify;          
+      text-align: justify;           
       line-height: 1.3;              
-      font-size: 14px;              
+      font-size: 14px;               
     }
-
 
     /* partie graphique + + */
     .graphique-titre {
       display: grid;                  
-      gap: 10px;                    
+      gap: 10px;                     
       margin-top: 30px;              
-      margin-bottom: 30px;          
+      margin-bottom: 30px;           
     }
-
 
     /* conteneur graphique + H3 à droite */
     .graphique-conteneur {
@@ -126,7 +109,6 @@ meilleur code pour linstant
       align-items: start;
     }
 
-
     .titre-droite {
       display: flex;
       flex-direction: column;
@@ -134,45 +116,62 @@ meilleur code pour linstant
     }
   </style>
 
-
   <script>
-    // partie json avec fetch et compagnie
-    fetch("feat.json")
-      .then(response => response.json())
-      .then(donnees => {
-        const annees = donnees.map(item => item["Année"]);
-        const entrees = donnees.map(item => item["Total des featurings"]);
+    // ✅ On met les données JSON directement ici
+    const donnees = [
+      { "id": 1, "Année": 2000, "Total des featurings": 174 },
+      { "id": 2, "Année": 2001, "Total des featurings": 253 },
+      { "id": 3, "Année": 2002, "Total des featurings": 321 },
+      { "id": 4, "Année": 2003, "Total des featurings": 397 },
+      { "id": 5, "Année": 2004, "Total des featurings": 397 },
+      { "id": 6, "Année": 2005, "Total des featurings": 360 },
+      { "id": 7, "Année": 2006, "Total des featurings": 352 },
+      { "id": 8, "Année": 2007, "Total des featurings": 406 },
+      { "id": 9, "Année": 2008, "Total des featurings": 422 },
+      { "id": 10, "Année": 2009, "Total des featurings": 396 },
+      { "id": 11, "Année": 2010, "Total des featurings": 475 },
+      { "id": 12, "Année": 2011, "Total des featurings": 517 },
+      { "id": 13, "Année": 2012, "Total des featurings": 505 },
+      { "id": 14, "Année": 2013, "Total des featurings": 524 },
+      { "id": 15, "Année": 2014, "Total des featurings": 522 },
+      { "id": 16, "Année": 2015, "Total des featurings": 562 },
+      { "id": 17, "Année": 2016, "Total des featurings": 600 },
+      { "id": 18, "Année": 2017, "Total des featurings": 649 },
+      { "id": 19, "Année": 2018, "Total des featurings": 698 },
+      { "id": 20, "Année": 2019, "Total des featurings": 690 },
+      { "id": 21, "Année": 2020, "Total des featurings": 732 },
+      { "id": 22, "Année": 2021, "Total des featurings": 768 },
+      { "id": 23, "Année": 2022, "Total des featurings": 792 },
+      { "id": 24, "Année": 2023, "Total des featurings": 832 },
+      { "id": 25, "Année": 2024, "Total des featurings": 740 }
+    ];
 
+    // on récupère les colonnes qu'on veut
+    const annees = donnees.map(item => item["Année"]);
+    const entrees = donnees.map(item => item["Total des featurings"]);
 
-        const ctx = document.getElementById("graphique");
-        new Chart(ctx, {
-          type: "bar",
-          data: {
-            labels: annees,
-            datasets: [{
-              label: "Total des featurings",
-              data: entrees,
-              backgroundColor: "lightblue",
-              borderColor: "blue",
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: false,
-            scales: {
-              y: { beginAtZero: true }
-            }
-          }
-        });
-      })
-      .catch(erreur => {
-        console.log("Erreur :", erreur);
-      });
+    // on affiche le graphique
+    const ctx = document.getElementById("graphique");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: annees,
+        datasets: [{
+          label: "Total des featurings",
+          data: entrees,
+          backgroundColor: "lightblue",
+          borderColor: "blue",
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: false,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
   </script>
-
 
 </body>
 </html>
-
-
-
