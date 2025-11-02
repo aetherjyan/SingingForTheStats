@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="styles.css" rel="stylesheet" />
+  <title>Impact des réseaux sociaux</title>
+
+  <!-- Polices -->
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Vercetti+Regular&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section class="section">
+    <!-- === Partie haute (titre + texte sur deux colonnes) === -->
+    <div class="intro">
+      <div class="intro-header">
+        <p class="section-number">III</p>
+        <h1>La croissance de l’impact<br>des réseaux sociaux</h1>
+      </div>
+
+      <div class="intro-text">
+        <p class="text">
+          Les réseaux sociaux jouent un rôle crucial dans le milieu musical mondial de nos jours. 
+          Selon une dernière analyse réalisée en 2024, les engagements TikTok ont un impact positif sur 
+          l’activité de streaming d’un artiste, l’engouement de TikTok mène à un succès mondial des musiques 
+          et les superfans ont plus de chances d’être des utilisateurs TikTok.
+        </p>
+        <p class="text">
+          Désormais, une grande majorité des sons qui entrent dans le Billboard Global 200 sont des titres 
+          qui sont devenus “viraux” (i.e. qui ont eu une période avec un engagement élevé) sur TikTok avant. 
+          (En outre, certains sont devenus viraux au moment même où ils sont entrés dans le classement ou peu après, 
+          et très peu n’ont eu leur moment viral.)
+        </p>
+      </div>
+    </div>
+
+    <!-- === Partie basse (titre + graphique côte à côte) === -->
+    <div class="chart-row">
+      <h2>L’impact de Tiktok sur le Billboard Global 200 (en 2024)</h2>
+      <div id="chart-container">Chargement...</div>
+    </div>
+  </section>
+
+  <script>
+    // === Données des fichiers SVG ===
+    const chartFiles = [
+      { label: "00%", file: "/graphique/svg00.html" },
+      { label: "84%", file: "/graphique/svg84.html" },
+      { label: "12%", file: "/graphique/svg12.html" },
+      { label: "04%", file: "/graphique/svg04.html" },
+    ];
+
+    let index = 0;
+    const container = document.getElementById("chart-container");
+
+    async function loadSVG(file) {
+      try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error(`Erreur de chargement: ${file}`);
+        const svgContent = await response.text();
+        container.style.opacity = 0;
+        setTimeout(() => {
+          container.innerHTML = svgContent;
+          container.style.opacity = 1;
+
+          const svg = container.querySelector("svg");
+          if (svg) {
+            svg.addEventListener("click", () => {
+              index = (index + 1) % chartFiles.length;
+              loadSVG(chartFiles[index].file);
+            });
+          }
+        }, 300);
+      } catch (error) {
+        console.error(error);
+        container.innerHTML = `<p style="color:red;">Impossible de charger ${file}</p>`;
+      }
+    }
+
+    loadSVG(chartFiles[index].file);
+  </script>
+</body>
+</html>
