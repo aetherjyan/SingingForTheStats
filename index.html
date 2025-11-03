@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singing for the Stats</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>L’industrie musicale est-elle en train de devenir performative ?</h1>
+        <div id="hero"></div>
+    </header>
+    <main>
+        <article>
+            <section class="chapter" id="chap-1">
+                <span class="chapter-number">I</span>
+                <section class="description">
+                    <h2>Des titres de plus en plus courts</h2>
+                    <div class="description-content">
+                        <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean, dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2 minutes 30.</p>
+                        <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road” et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
+                        En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams au compteur.</p>
+                    </div>
+                </section>
+                <section class="chart">
+                    <h3>Évolution de la durée moyenne d’une chanson chaque année (2000-2023)¹</h3>
+                    <div class="chart-window">
+                        <span class="window-title">music_duration_evolution</span>
+                        <div class="chart-container">
+                            <canvas id="song-duration" height="640"></canvas>
+                        </div>
+                    </div>
+                    <div class="controller-window">
+                        <div class="window-titlebar">
+                            <span class="window-title">YEAR_FX</span>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-rail">
+                                <input id="year-slider" type="range" min="0" step="1" value="0" list="steplist" />
+                                <!-- <svg class="legend" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 580" fill="none">
+                                <path d="M4.06108 1.96804C4.02704 0.871392 3.1282 0 2.03103 0C0.909322 0 0 0.909322 0 2.03103L0 575C0 577.761 2.23858 580 5 580H16.8424C19.6646 580 21.9276 577.666 21.84 574.845L4.06108 1.96804Z" fill=""/>
+                                </svg> -->
+                                <datalist id="steplist">
+                                    <option value="0"></option>
+                                    <option value="6"></option>
+                                    <option value="12"></option>
+                                    <option value="18"></option>
+                                    <option value="24"></option>
+                                </datalist>
+                                <div id="current-year" aria-hidden="true">—</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="trivia">
+                    <div class="trivia card"></div>
+                    <div class="trivia card"></div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- CDN & script import -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
+    <script src="./scripts/song-duration.js"></script>
+</body>
+</html>
