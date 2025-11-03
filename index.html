@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,11 @@
     <link rel="stylesheet" href="./style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1>L’industrie musicale est-elle en train de devenir performative ?</h1>
@@ -21,9 +25,16 @@
                 <section class="description">
                     <h2>Des titres de plus en plus courts</h2>
                     <div class="description-content">
-                        <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean, dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2 minutes 30.</p>
-                        <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road” et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
-                        En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams au compteur.</p>
+                        <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des
+                            chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard
+                            pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean,
+                            dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2
+                            minutes 30.</p>
+                        <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est
+                            popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road”
+                            et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
+                            En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams
+                            au compteur.</p>
                     </div>
                 </section>
                 <section class="chart">
@@ -61,12 +72,57 @@
                     <div class="trivia card"></div>
                 </div>
             </section>
+            <section class="chapter" id="chap-2">
+                <h1>Ⅱ</h1>
+                <h2>La course aux <br>collaborations</h2>
+
+                <div class="paragraphe">
+                    <p class="gauche">
+                        L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution exponentielle
+                        des featuring musicaux.
+                        Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs
+                        artistes. Les feats sont aujourd’hui utilisé à des fins marketing.
+                    </p>
+                    <p class="droite">
+                        En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de chaque
+                        interprète va profiter aux maisons de disques et aux artistes.
+                        Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en
+                        notoriété.
+                        Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent les
+                        collaborations dans les charts.
+                    </p>
+                </div>
+
+                <div class="graphique-titre">
+
+                    <div class="graphique-conteneur">
+                        <div class="fond_du_graphique">
+                            <img src="fond_graphique.svg" class="fond-svg">
+                            <canvas id="graphique" width="400" height="200"></canvas>
+                        </div>
+
+                        <div class="titre-droite">
+                            <h3>Évolution du total de featurings parmi les chansons les plus populaires de chaque année
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="trivia">
+                    <H3>16 semaines dans le BillBoard</H3>
+                    <p>Le featuring ayant eu le plus de succès est “One Sweet Day” de Boyz II Men et Mariah Carey
+                        qui a dépassé “Despacito” de Luis Fonsi’s et “Old Town Road” de Lil Nas X.</p>
+
+                    <script src="./scripts/featuring.js"></script>
+            </section>
         </article>
     </main>
 
     <!-- CDN & script import -->
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js" integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
+        integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
     <script src="./scripts/song-duration.js"></script>
 </body>
+
 </html>
