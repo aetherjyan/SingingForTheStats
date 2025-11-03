@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css"> 
+  <title>Collaborations musicales</title>
+</head>
+<body>
+
+  <h1>Ⅱ</h1>
+  <h2>La course aux <br>collaborations</h2>
+
+  <div class="paragraphe">
+    <p class="gauche">
+      L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution exponentielle des featuring musicaux.
+      Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs artistes. Les feats sont aujourd’hui utilisé à des fins marketing.
+    </p>
+    <p class="droite">
+      En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de chaque interprète va profiter aux maisons de disques et aux artistes.  
+      Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en notoriété.
+      Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent les collaborations dans les charts.
+    </p>
+  </div>
+
+  <div class="graphique-titre">
+
+    <div class="graphique-conteneur">
+      <div class="fond_du_graphique">
+        <img src="fond_graphique.svg" class="fond-svg">
+        <canvas id="graphique" width="400" height="200"></canvas>
+      </div>
+
+      <div class="titre-droite">
+        <h3>Évolution du total de featurings parmi les chansons les plus populaires de chaque année</h3>
+      </div>
+    </div>
+  </div>
+
+<div class="trivia">
+    <H3>16 semaines dans le BillBoard</H3>
+    <p>Le featuring ayant eu le plus de succès est “One Sweet Day” de Boyz II Men et Mariah Carey 
+      qui a dépassé “Despacito” de Luis Fonsi’s et “Old Town Road” de Lil Nas X.</p>
+
+
+
+  <script>
+    fetch("feat.json")
+      .then(response => response.json())
+      .then(donnees => {
+        const annees = donnees.map(item => item["Année"]);
+        const entrees = donnees.map(item => item["Total des featurings"]);
+
+        const ctx = document.getElementById("graphique");
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: annees,
+            datasets: [{
+              label: "Total des featurings par années",
+              data: entrees,
+              backgroundColor: "#21abb5",
+              borderColor: "#00EEFF",
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: false,
+            scales: { y: { beginAtZero: true } },
+            plugins : { legend: { position: "bottom" } } // afin de mettre la légende en bas
+          }
+        });
+      })
+      .catch(erreur => console.log("Erreur :", erreur));
+  </script>
+
+</body>
+</html>
