@@ -1,0 +1,172 @@
+/* CHAPITRE 1 */
+
+.chart-window .window-title {
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+#chap-1 .chart-window {
+    background-color: var(--Cyan-20);
+    border-radius: 16px;
+    border: 2px solid var(--Black-25);
+    grid-column: 2 / 10;
+    padding: 1rem;
+}
+
+#chap-1 .controller-window {
+    grid-column: 10 / 12;
+    background-color: var(--Light-Grey);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+#song-duration {
+    border-radius: 8px;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--Super-Light-Grey);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex: 1 1 auto;
+}
+
+/* slider rail + ticks: use available container height */
+.slider-rail {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 48px);
+    /* adapt to container */
+    min-height: 320px;
+    display: block;
+    box-sizing: border-box;
+    overflow: visible;
+    padding: 24px;
+}
+
+/* ticks: drawn with CSS gradients — lightweight and fixed-number appearance */
+.slider-ticks {
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    bottom: 18px;
+    width: 22px;
+    pointer-events: none;
+    background-image:
+        repeating-linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.15) 0px,
+            rgba(0, 0, 0, 0.15) 2px,
+            transparent 2px,
+            transparent 24px),
+        repeating-linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.28) 0px,
+            rgba(0, 0, 0, 0.28) 2px,
+            transparent 2px,
+            transparent 120px);
+    background-repeat: repeat, repeat;
+    background-position: left top, left top;
+    background-size: 100% 100%, 100% 100%;
+}
+
+#year-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(270deg);
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    display: block;
+    height: 36px;
+}
+
+/* track */
+#year-slider::-webkit-slider-runnable-track {
+    height: 10px;
+    background: linear-gradient(90deg, rgba(31, 31, 38, 0.25), rgba(31, 31, 38, 0.5));
+    border-radius: 6px;
+}
+
+#year-slider::-moz-range-track {
+    height: 10px;
+    background: linear-gradient(90deg, rgba(31, 31, 38, 0.25), rgba(31, 31, 38, 0.5));
+    border-radius: 6px;
+}
+
+/* thumb */
+:root {
+    --thumb-h: 34px;
+    --thumb-w: 34px;
+}
+
+#year-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border-radius: 6px;
+    background: #ffffff;
+    margin-top: -12px;
+}
+
+#year-slider::-moz-range-thumb {
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    border-radius: 6px;
+    background: #ffffff;
+    border: none;
+}
+
+#current-year {
+    position: absolute;
+    left: 16px;
+    /* always to the right of the thumb/rail center */
+    transform: translateY(-50%);
+    /* we update top in JS only */
+    pointer-events: none;
+    font-family: var(--Display-Font);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--Black);
+    white-space: nowrap;
+}
+
+#first-year,
+#last-year {
+    font-family: var(--Display-Font);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--Dark-Grey);
+}
+
+#first-year {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translateX(60%);
+}
+
+#last-year {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(60%);
+}
+
+.slider-rail .legend {
+    fill: var(--Dark-Grey);
+    height: 100%;
+    width: 20px;
+}
+
+#longuest-song {
+    grid-column-start: 4;
+}

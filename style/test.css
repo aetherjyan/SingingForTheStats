@@ -1,0 +1,46 @@
+
+
+.trivia-card {
+    background-color: var(--Black-25);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border: 2px solid var(--Black-25);
+    box-sizing: border-box;         
+}
+
+.trivia-card .info {
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem;
+    gap: 1rem;
+    height: auto;
+}
+
+.trivia-card .preview {
+    overflow: clip;
+    box-sizing: border-box;
+    flex-grow: 0;
+    align-self: stretch;
+}
+
+.trivia-card .preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+    max-width: none;
+    max-height: none;
+    align-self: center;
+    justify-self: center;
+}
+
+.pill {
+    background-color: var(--Cyan);
+    color: var(--Black);
+    padding: 4px 8px;
+    border-radius: 4px;
+    width: fit-content;
+}
