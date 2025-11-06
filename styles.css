@@ -57,7 +57,8 @@ body {
 /* === Partie graphique === */
 .chart-row {
   display: flex;
-  align-items: center; /* ✅ centre verticalement titre et graphique */
+  align-items: center;
+  /* ✅ centre verticalement titre et graphique */
   justify-content: space-between;
   gap: 40px;
 }
@@ -88,6 +89,21 @@ body {
 
 #chart-container svg:hover {
   transform: scale(1.02);
+}
+
+#tiktok-container {
+  width: 500px;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  text-align: center;
+  padding: 16px;
+  transition: opacity 0.6s ease;
+}
+
+#tiktok-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /* === Responsive === */
