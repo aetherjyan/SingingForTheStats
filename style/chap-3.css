@@ -1,6 +1,9 @@
 /* Ajouter ou ajuster ces styles dans chap-3.css */
 
-#chart-wrapper {
+#chap-3 .chart-window {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
     /* Rendre le conteneur carré pour un graphique rond */
     width: 300px; 
@@ -8,7 +11,19 @@
     margin: 0 auto; /* Centrer le graphique */
 }
 
+#chap-3 #tiktok {
+    aspect-ratio: 1 / 1;
+}
+
+#chap-3 .chart-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+
 .chart-overlay-button {
+    display: block;
     position: absolute;
     top: 50%;
     left: 50%;

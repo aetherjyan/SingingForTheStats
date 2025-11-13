@@ -105,7 +105,7 @@ function updateChart() {
                     activeColor, // Couleur du quota actif
                     "#d3d3d3"   // Couleur de la partie restante (gris clair)
                 ],
-                borderWidth: 2,
+                borderWidth: 0,
                 borderColor: "#ffffff",
                 hoverOffset: 0,
             },
@@ -118,7 +118,9 @@ function updateChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            cutout: "70%",
+            cutout: "80%",
+            circumference: 180,
+            rotation: -90,
             plugins: {
                 legend: { display: false },
                 tooltip: { enabled: false },
