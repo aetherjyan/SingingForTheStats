@@ -211,8 +211,28 @@
         <!-- === Partie basse (titre + graphique côte à côte) === -->
         <div class="chart-row">
           <h2>L’impact de Tiktok sur le Billboard Global 200 (en 2024)</h2>
-          <div id="chart-container">
+          <div id="chart-wrapper">
             <canvas id="tiktok"></canvas>
+
+            <svg id="tiktok-button" class="chart-overlay-button" viewBox="0 0 181 179" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="63.9898" cy="64.0102" rx="63.9898" ry="64.0102"
+                transform="matrix(0.536393 0.843968 0.84393 -0.536453 3.35214 68.7366)" fill="#919297" />
+              <path
+                d="M38.942 121.938C57.4538 151.064 96.079 159.663 125.215 141.143C154.35 122.623 162.962 83.9967 144.45 54.87C125.939 25.7432 87.3122 17.1439 58.1765 35.6643C29.041 54.1848 20.4302 92.8109 38.942 121.938Z"
+                stroke="white" stroke-opacity="0.05" stroke-width="3" />
+              <path
+                d="M40.0354 111.764C36.8519 113.787 34.8221 117.206 34.5691 120.969L34.3061 124.882L37.9604 126.305C41.4754 127.674 45.432 127.287 48.6154 125.263L99.3651 93.005C103.093 90.6355 104.194 85.6927 101.825 81.9649C99.4554 78.2371 94.5128 77.1359 90.7851 79.5054L40.0354 111.764Z"
+                fill="#55565C" />
+              <path
+                d="M38.5051 124.908C41.575 126.103 45.0303 125.764 47.8106 123.997L98.5606 91.7385C101.589 89.8134 102.483 85.7985 100.559 82.77C98.6338 79.7414 94.6185 78.8464 91.59 80.7712L40.8399 113.03C38.0595 114.797 36.2871 117.783 36.0661 121.07L35.8763 123.885L38.5051 124.908Z"
+                stroke="white" stroke-opacity="0.05" stroke-width="3" />
+            </svg>
+          </div>
+
+          <div id="chart-caption">
+            <p id="caption-quota" class="big-number">04 %</p>
+            <p id="caption-description">des musiques ne sont pas devenues virales.</p>
           </div>
         </div>
       </section>
@@ -246,8 +266,8 @@
   <script src="./scripts/script.js"></script>
 
 
-  
-<!-- Popup Overlay global -->
+
+  <!-- Popup Overlay global -->
   <div id="popup-overlay" class="popup-overlay" style="display: none;">
     <div class="popup">
       <button class="popup-close" onclick="closePopup()">
