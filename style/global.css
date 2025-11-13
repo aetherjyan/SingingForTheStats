@@ -7,10 +7,14 @@
     --Pink: #FF5CF1;
     --Light-Pink: #FF7DF4;
 
+    --White: #FFFFFF;
     --White-5: rgba(255, 255, 255, 0.05);
+    --White-25: rgba(255, 255, 255, 0.25);
+    --White-50: rgba(255, 255, 255, 0.50);
     --Black: #23232a;
     --Black-50: rgba(31, 31, 38, 0.5);
     --Black-25: rgba(31, 31, 38, 0.25);
+    --Black-12: rgba(31, 31, 38, 0.0125);
     --Dark-Grey: #4f525d;
     --Grey: #666979;
     --Mid-Grey: #6c707f;
@@ -19,9 +23,12 @@
 
     --Grid-Margin: 8rem;
     --Grid-Gutter: 2.5rem;
+    --Spacing-S: 2rem;
+    --Spacing-M: 25svh;
+    --Spacing-L: 40svh;
 
-    --Heading-Font: 'Unbounded', sans-serif;
-    --Body-Font: 'Vercetti', sans-serif;
+    --Heading-Font: 'Unbounded', system-ui, sans-serif;
+    --Body-Font: 'Vercetti', system-ui, sans-serif;
     --Display-Font: 'Geist Mono', monospace;
 }
 
@@ -83,7 +90,7 @@ body {
 }
 
 main {
-    background: linear-gradient(180deg, var(--Cyan) 0%, var(--Dark-Cyan) 53.57%, var(--Dark-Cyan) 69.64%, var(--Light-Pink) 107.13%);
+    background: linear-gradient(180deg, var(--Branding-Cyan, #0EF) 0%, var(--Branding-Dark-Cyan, #335B68) 53.57%, var(--Branding-Dark-Cyan, #335B68) 69.64%, var(--Branding-Light-Pink, #FF7DF4) 107.13%);
     padding: 0px var(--Grid-Margin);
     display: flex;
     justify-content: center;
@@ -95,16 +102,13 @@ main {
     }
 }
 
-header {
-    width: 100wv;
-    height: 100vh;
-    background: linear-gradient(180deg, var(--Cyan, #0EF) 0%, var(--Pink, #FF5CF1) 100%);
-}
-
 article {
     background: var(--Black-25);
     width: 100%;
     max-width: 1280px;
+    border-radius: 40px 40px 0 0;
+    position: relative;
+    z-index: 0;
 }
 
 p {
@@ -113,14 +117,16 @@ p {
 }
 
 .chapter-number,
-.window-title, .pill {
+.window-title, 
+.pill, 
+.scroll-down p {
     font-family: var(--Display-Font);
     text-transform: uppercase;
     font-weight: 600;
     line-height: 100%;
 }
 
-.chart-window, .controller-window {
+.chart-window, .controller-window, .trackhead {
     backdrop-filter: blur(24px);
 }
 
@@ -130,7 +136,7 @@ p {
 
 .chapter-number {
     color: var(--Cyan);
-    font-size: 24px;
+    font-size: 1.5rem;
     letter-spacing: -0.96px;
     grid-column: 2 / 3;
 }
@@ -143,13 +149,14 @@ p {
 .chart h3 {
     grid-column: 2 / 9;
     text-wrap: balance;
-    margin-bottom: 24px;
+    margin-bottom: var(--Spacing-S);
 }
 
 .chapter {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: var(--Spacing-M);
+    margin-bottom: var(--Spacing-L);
 }
 
 .chapter > section, .chapter .trivia {
@@ -172,25 +179,42 @@ p {
 }
 
 .trivia {
-    row-gap: 24px;
+    row-gap: var(--Spacing-S);
 }
 
 /* Classes à appliquer aux widgets (graphiques, contrôleurs, etc.)  */
 
+/* Fenêtres */
+
+.chart-window {
+    overflow: hidden;
+    border-radius: 16px;
+    padding: 1rem;
+}
+
+.controller-window {
+    overflow: hidden;
+    border-radius: 16px;
+}
+
 /* Entête de la fenêtre */
 .window-titlebar {
-    border-bottom: 2px solid var(--Mid-Grey);
-    color: var(--Black);
     padding: 24px;
+    overflow: hidden;
 }
 
 /* Titre de l'entête */
 .window-title {
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: -0.64px;
     position: relative;
     display: block;
     opacity: .5;
+}
+
+.chart-window .window-title {
+    margin-top: 8px;
+    margin-bottom: 24px;
 }
 
 /* Classes à appliquer au Trivia */
@@ -223,14 +247,6 @@ p {
     box-sizing: border-box;
     flex-grow: 0;
     align-self: stretch;
-}
-
-.trivia-card .preview iframe {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16 / 9;
-    border: none;
-    display: block;
 }
 
 .trivia-card .preview img {
