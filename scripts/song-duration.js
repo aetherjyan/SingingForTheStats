@@ -1,8 +1,10 @@
 /*Chapter 1 - Chart*/
 let ctx = document.getElementById('song-duration').getContext('2d');
 
-let myChart;
-let JSONdata;
+let yearSlider = document.querySelector(".year-slider"); 
+
+let DurationChart;
+let DurationJsonData;
 
 fetch("./data/duration_evolution.json")
     .then(function (response) {
@@ -12,9 +14,9 @@ fetch("./data/duration_evolution.json")
         throw new Error('Failed to load data');
     })
     .then(function (data) {
-        JSONdata = data;
-        createChart(JSONdata, 'line');
-        initYearSlider(JSONdata); // initialiser le slider après création du chart
+        DurationJsonData = data;
+        createChart(DurationJsonData, 'line');
+        initYearSlider(DurationJsonData); // initialiser le slider après création du chart
     });
 
 
@@ -57,7 +59,7 @@ function createChart(data, type) {
 
         datasets: [{
             label: 'Durée de chanson moyenne (secondes)',
-            data: data.map(row => row.duration),
+            data: data.map((row, i) => i === 0 ? row.duration : null),
             fill: false,
             borderColor: css.LightCyan,
             tension: 0.1,
@@ -81,7 +83,7 @@ function createChart(data, type) {
     const glowPlugin = {
         id: 'glowLine',
         afterDatasetsDraw(chart) {
-            const {ctx} = chart;
+            const { ctx } = chart;
             chart.data.datasets.forEach((dataset, idx) => {
                 const meta = chart.getDatasetMeta(idx);
                 if (!meta || !meta.dataset) return;
@@ -94,7 +96,6 @@ function createChart(data, type) {
         }
     };
 
-    // keep y scale fixed to full dataset so updates don't re-scale
     const durations = data.map(d => d.duration);
     const yMin = Math.floor(Math.min(...durations) - 5);
     const yMax = Math.ceil(Math.max(...durations) + 5);
@@ -115,7 +116,7 @@ function createChart(data, type) {
                         color: css.Grey,
                         font: {
                             family: css.DisplayFont,
-                            size: 12,
+                            size: 14,
                         }
                     }
                 },
@@ -131,12 +132,12 @@ function createChart(data, type) {
                     },
                     ticks: {
                         color: css.Grey,
-                        callback: function(value) {
+                        callback: function (value) {
                             return formatSecondsToMinSec(value);
                         },
                         font: {
                             family: css.DisplayFont,
-                            size: 12,
+                            size: 14,
                         }
                     }
                 }
@@ -190,113 +191,22 @@ function createChart(data, type) {
         plugins: [glowPlugin],
     }
 
-    myChart = new Chart(ctx, config);
+    DurationChart = new Chart(ctx, config);
 }
 
-// show tooltip on a specific datapoint for a short time
-function showTemporaryTooltip(index, ms = 2000) {
-    if (!myChart) return;
-    const meta = myChart.getDatasetMeta(0);
-    const el = meta && meta.data && meta.data[index];
-    if (!el) return;
+// Controleur
 
-    // set active element & tooltip at the point coordinates
-    myChart.setActiveElements([{ datasetIndex: 0, index }]);
-    myChart.tooltip.setActiveElements([{ datasetIndex: 0, index }], { x: el.x, y: el.y });
-    myChart.update();
-
-    // clear after ms
-    setTimeout(() => {
-        myChart.setActiveElements([]);
-        myChart.tooltip.setActiveElements([], { x: 0, y: 0 });
-        myChart.update();
-    }, ms);
+function updateChartLine(index) {
+    const fullData = DurationJsonData.map(d => d.duration);
+    DurationChart.data.datasets[0].data = fullData.map((val, i) => (i <= index ? val : null));
+    DurationChart.update();
 }
+yearSlider.addEventListener('input', function (e) {
+    const index = +e.target.value;
+    updateChartLine(index);
+});
+chart.data.datasets[0].data = fullData.map((val, i) => i <= index ? val : null);
+chart.update();
 
-// update chart without changing axes/labels: keep full labels, null-out future points
-function updateChartToIndex(index) {
-    if (!myChart || !JSONdata) return;
 
-    // keep labels as full-year list so x-axis doesn't change
-    myChart.data.labels = JSONdata.map(r => r.year);
 
-    // show values up to index, hide later ones with null (keeps axis unchanged)
-    myChart.data.datasets[0].data = JSONdata.map((r, i) => (i <= index ? Math.round(r.duration) : null));
-
-    myChart.update();
-
-    // show tooltip on the most recent visible point
-    showTemporaryTooltip(index, 2000);
-}
-
-// initialise le slider DOM et ses events
-function initYearSlider(data) {
-    const slider = document.getElementById('year-slider');
-    const label = document.getElementById('current-year');
-    const rail = slider?.parentElement;
-    if (!slider || !label || !rail) return;
-
-    rail.style.position = rail.style.position || 'relative';
-    label.style.position = 'absolute';
-    // remove the broken calc; we'll compute left dynamically:
-    // label.style.left = 'calc(100% + -48px)';
-
-    const maxIndex = Math.max(0, data.length - 1);
-    slider.min = 0;
-    slider.max = maxIndex;
-    slider.step = 1;
-
-    const thumbHraw = getComputedStyle(document.documentElement).getPropertyValue('--thumb-h') || '34px';
-    const thumbH = parseFloat(thumbHraw);
-
-    function layoutSlider() {
-        const railStyle = getComputedStyle(rail);
-        const paddingTop = parseFloat(railStyle.paddingTop) || 0;
-        const paddingBottom = parseFloat(railStyle.paddingBottom) || 0;
-
-        // set slider width to match usable vertical length
-        const usable = rail.clientHeight - paddingTop - paddingBottom;
-        const sliderWidth = Math.max(usable - 8, 80);
-        slider.style.width = `${sliderWidth}px`;
-
-        // remove horizontal JS placement — label stays anchored by CSS to rail center
-        // positionElements();  <-- keep vertical positioning only
-        positionElements();
-    }
-
-    slider.value = maxIndex;
-    const initialIndex = maxIndex - Number(slider.value);
-    label.textContent = data[initialIndex].year;
-    updateChartToIndex(initialIndex);
-
-    function positionElements() {
-        const min = Number(slider.min);
-        const max = Number(slider.max);
-        const val = Number(slider.value);
-        const pct = (max === min) ? 0 : (val - min) / (max - min);
-        const visualPct = 1 - pct;
-
-        const railStyle = getComputedStyle(rail);
-        const paddingTop = parseFloat(railStyle.paddingTop) || 0;
-        const paddingBottom = parseFloat(railStyle.paddingBottom) || 0;
-        const available = rail.clientHeight - paddingTop - paddingBottom - thumbH;
-        const base = paddingTop + (thumbH / 2);
-
-        // vertical center on thumb
-        const y = base + visualPct * available;
-        label.style.top = `${y}px`;
-    }
-
-    requestAnimationFrame(layoutSlider);
-
-    slider.addEventListener('input', (e) => {
-        const visualValue = Number(e.target.value);
-        const idx = maxIndex - visualValue;
-        label.textContent = data[idx].year;
-        updateChartToIndex(idx);
-        requestAnimationFrame(positionElements);
-    });
-
-    window.addEventListener('resize', () => requestAnimationFrame(layoutSlider));
-    window.addEventListener('load', () => requestAnimationFrame(layoutSlider));
-}

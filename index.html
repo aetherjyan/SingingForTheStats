@@ -196,6 +196,136 @@
 
 
         <!--- <h1>II</h1>
+    <header>
+        <div class="title-wrapper">
+            <h1 class="text-slide-in">L’industrie musicale est-elle en train de devenir performative ?</h1>
+        </div>
+        <a class="scroll-down" href="#intro">
+            <p class="text-slide-in">Défiler vers le bas pour en savoir plus</p>
+            <img src="./assets/media/icons/Scroll Down Icon.svg" alt="">
+        </a>
+        <div class="hero">
+            <img id="flashes" src="assets/media/hero/Camera-Flashes.png" alt="">
+            <img id="front" src="./assets/media/hero/Front.svg" alt="">
+
+            <img id="stats-wave" src="./assets/media/hero/Stats Wave.svg" alt="">
+            <img class="moveupdown" id="stream-stats" src="./assets/media/hero/Stream Stats.svg" alt="">
+            <img class="moveupdown" id="view-stats" src="./assets/media/hero/Views Stats.svg" alt="">
+            <img id="stats-up" src="./assets/media/hero/Stats Up.svg" alt="">
+        </div>
+    </header>
+    <main>
+        <article>
+            <div class="trackhead">
+                <img id="head-content" src="./assets/media/hero/Head.svg" alt="">
+            </div>
+            <section class="intro" id="intro">
+
+            </section>
+            <section class="chapter" id="chap-1">
+                <section class="description">
+                    <span class="chapter-number">I</span>
+                    <h2 class="text-slide-in">Des titres de plus en plus courts</h2>
+                    <div class="description-content">
+                        <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des
+                            chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard
+                            pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean,
+                            dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2
+                            minutes 30.</p>
+                        <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est
+                            popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road”
+                            et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
+                            En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams
+                            au compteur.</p>
+                    </div>
+                </section>
+                <section class="chart">
+                    <h3 class="text-slide-in">Évolution de la durée moyenne d’une chanson chaque année (2000-2023)¹</h3>
+                    <div class="chart-window slide-in">
+                        <span class="window-title">music_duration_evolution</span>
+                        <div class="chart-container">
+                            <canvas id="song-duration" height="640"></canvas>
+                        </div>
+                    </div>
+                    <div class="controller-window slide-in">
+                        <div class="window-titlebar">
+                            <label class="window-title" for="year-slider">YEAR_FX</label>
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-rail">
+                                
+                                <input class="year-slider" id="year-slider" type="range" orient="vertical" min="0"
+                                    max="24" step="1" value="0" />
+                                <div class="ticks">
+                                    <span class="top-year">2023 -</span>
+                                    <span>2022 -</span>
+                                    <span>2021 -</span>
+                                    <span>2020 -</span>
+                                    <span>2019 -</span>
+                                    <span>2018 -</span>
+                                    <span>2017 -</span>
+                                    <span>2016 -</span>
+                                    <span>2015 -</span>
+                                    <span>2014 -</span>
+                                    <span>2013 -</span>
+                                    <span>2012 -</span>
+                                    <span>2011 -</span>
+                                    <span>2010 -</span>
+                                    <span>2009 -</span>
+                                    <span>2008 -</span>
+                                    <span>2007 -</span>
+                                    <span>2006 -</span>
+                                    <span>2005 -</span>
+                                    <span>2004 -</span>
+                                    <span>2003 -</span>
+                                    <span>2002 -</span>
+                                    <span>2001 -</span>
+                                    <span>2000 -</span>
+                                    <span class="bottom-year">1999 -</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="trivia">
+                    <h2 id="" class="trivia-heading">Trivia</h2>
+                    <section class="trivia-card shortest-song slide-in" id="shortest-song">
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/5oD2Z1OOx1Tmcu2mc9sLY2?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                        <div class="info">
+                            <p class="pill">Fun Fact</p>
+                            <h3>1,316 secondes</h3>
+                            <p>C’est la durée de la chanson la plus courte jamais enregistrée². Intitulée, “You
+                                Suffer”et réalisée par le groupe de grindcore brit annique Napalm Death, elle comporte
+                                uniquement brièvement les paroles “You suffer - but why ?”.</p>
+                        </div>
+                    </section>
+                    <section class="trivia-card longuest-song slide-in" id="longuest-song">
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/77sb4KLyDEh7123qeCPAi7?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                        <div class="info">
+                            <p class="pill">Fun Fact</p>
+                            <h3>138 heures</h3>
+                            <p>À l’opposé se trouve le poème “Shri Ramcharitmanas” de l’artiste indien Dr Pillai ; dont
+                                l’enregistrement détient le record du plus long enregistré³ en cumulant 138 h 41 m et 20
+                                s. Celui-ci est tellement long qu’il a été découper en plusieurs titres pour tenir sur
+                                les plateformes de streaming !</p>
+                        </div>
+                    </section>
+                </section>
+            </section>
+            <section class="chapter" id="chap-2">
+                <h1>II</h1>
                 <h2>La course aux collaborations</h2>
 
                 <div class="paragraphe">
