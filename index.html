@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./style/global.css">
   <link rel="stylesheet" href="./style/hero.css">
   <link rel="stylesheet" href="./style/chap-1.css">
+  <link rel="stylesheet" href="./style/chap-3.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -186,7 +187,6 @@
 
         <script src="./scripts/featuring.js"></script>
       </section>
-
       <section class="chapter" id="chap-3">
         <!-- === Partie haute (titre + texte sur deux colonnes) === -->
         <div class="intro">
@@ -196,16 +196,16 @@
           </div>
 
           <div class="description-content">
-          <p>Les réseaux sociaux jouent un rôle crucial dans le milieu musical mondial de nos jours.
-            Selon une dernière analyse réalisée en 2024, les engagements TikTok ont un impact positif sur
-            l’activité de streaming d’un artiste, l’engouement de TikTok mène à un succès mondial des musiques
-            et les superfans ont plus de chances d’être des utilisateurs TikTok.</p>
-          <p>Désormais, une grande majorité des sons qui entrent dans le Billboard Global 200 sont des titres
-            qui sont devenus “viraux” (i.e. qui ont eu une période avec un engagement élevé) sur TikTok avant.
-            (En outre, certains sont devenus viraux au moment même où ils sont entrés dans le classement ou peu
-            après,
-            et très peu n’ont eu leur moment viral.)</p>
-        </div>
+            <p>Les réseaux sociaux jouent un rôle crucial dans le milieu musical mondial de nos jours.
+              Selon une dernière analyse réalisée en 2024, les engagements TikTok ont un impact positif sur
+              l’activité de streaming d’un artiste, l’engouement de TikTok mène à un succès mondial des musiques
+              et les superfans ont plus de chances d’être des utilisateurs TikTok.</p>
+            <p>Désormais, une grande majorité des sons qui entrent dans le Billboard Global 200 sont des titres
+              qui sont devenus “viraux” (i.e. qui ont eu une période avec un engagement élevé) sur TikTok avant.
+              (En outre, certains sont devenus viraux au moment même où ils sont entrés dans le classement ou peu
+              après,
+              et très peu n’ont eu leur moment viral.)</p>
+          </div>
         </div>
 
         <!-- === Partie basse (titre + graphique côte à côte) === -->
@@ -219,12 +219,47 @@
     </article>
   </main>
 
+  <footer>
+    <section class="footer-elements">
+      <div class="footer-logo">
+        <img src="assets/media/logo/Logofooter.png" alt="Logo du site Singing for the Stats">
+      </div>
+      <div class="footer-text">
+        <p class="copyright">
+          © 2025 Singing for the Stats
+        </p>
+        <p class="popup-mentions" id="popup-mentions">
+          Mentions légales
+        </p>
+      </div>
+    </section>
+  </footer>
+
+
+
   <!-- CDN & script import -->
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
     integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
   <script src="./scripts/song-duration.js"></script>
   <script src="./scripts/tiktok.js"></script>
+  <script src="./scripts/script.js"></script>
+
+
+  
+<!-- Popup Overlay global -->
+  <div id="popup-overlay" class="popup-overlay" style="display: none;">
+    <div class="popup">
+      <button class="popup-close" onclick="closePopup()">
+        <p><b>FERMER</b></p>
+      </button>
+      <div id="popup-content">
+        <!-- Le contenu sera injecté ici par le JS -->
+      </div>
+    </div>
+  </div>
+
+
 </body>
 
 </html>
