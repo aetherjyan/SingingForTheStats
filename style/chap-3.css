@@ -1,0 +1,60 @@
+/* Ajouter ou ajuster ces styles dans chap-3.css */
+
+#chap-3 .chart-window {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    /* Rendre le conteneur carré pour un graphique rond */
+    width: 300px; 
+    height: 300px;
+    margin: 0 auto; /* Centrer le graphique */
+}
+
+#chap-3 #tiktok {
+    aspect-ratio: 1 / 1;
+}
+
+#chap-3 .chart-container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+
+.chart-overlay-button {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px; /* Taille ajustée pour couvrir le centre du graphique */
+    height: 150px;
+    cursor: pointer;
+    z-index: 10; /* Assure que le bouton est au-dessus du canvas */
+}
+
+#chart-caption {
+    /* Positionnement du texte sous le graphique */
+    width: 100%;
+    max-width: 350px; /* Limiter la largeur si besoin */
+    text-align: center;
+    margin: 20px auto 0;
+}
+
+#caption-quota {
+    /* Style pour le pourcentage */
+    font-family: 'Unbounded', sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 0 10px 0;
+}
+
+#caption-description {
+    /* Style pour la description */
+    font-family: 'Geist Mono', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+}
