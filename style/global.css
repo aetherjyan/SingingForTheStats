@@ -160,7 +160,7 @@ p {
 }
 
 .chapter-number,
-.window-title,
+.window-titlebar,
 .pill,
 .scroll-down p {
     font-family: var(--Display-Font);
@@ -248,22 +248,21 @@ p {
     border-radius: 16px;
 }
 
-/* Entête de la fenêtre */
+/* Barre de titre de fenêtre */
 .window-titlebar {
+    font-size: 1rem;
+    letter-spacing: -0.64px;
+    position: relative;
+    display: flex;
+    opacity: .5;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
     padding: 24px;
     overflow: hidden;
 }
 
-/* Titre de l'entête */
-.window-title {
-    font-size: 1rem;
-    letter-spacing: -0.64px;
-    position: relative;
-    display: block;
-    opacity: .5;
-}
-
-.chart-window .window-title {
+.chart-window .window-titlebar {
     margin-top: 8px;
     margin-bottom: 24px;
 }

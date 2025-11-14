@@ -15,10 +15,7 @@
   gap: 24px;
 }
 
-.window-titlebar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.intro .window-title {
   background-color: var(--Dark-Cyan);
   color: var(--White-25);
   border: 2px solid var(--Black-25);
