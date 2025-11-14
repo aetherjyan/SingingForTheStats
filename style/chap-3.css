@@ -5,10 +5,11 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    /* Rendre le conteneur carré pour un graphique rond */
-    width: 300px; 
-    height: 300px;
-    margin: 0 auto; /* Centrer le graphique */
+    grid-column: 6 / 12;
+}
+
+#chap-3 .chart .left-side {
+    grid-column: 2 / 6;   
 }
 
 #chap-3 #tiktok {
