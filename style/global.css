@@ -263,8 +263,7 @@ p {
 }
 
 .chart-window .window-titlebar {
-    margin-top: 8px;
-    margin-bottom: 24px;
+    padding: 8px 0 24px 0;
 }
 
 /* Classes à appliquer au Trivia */
