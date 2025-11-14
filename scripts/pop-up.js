@@ -29,10 +29,37 @@ mentionsLégales.addEventListener('click', () => {
         <h3>Données personnelles</h3> 
         <p> Ce site ne collecte aucune donnée personnelle. Aucune information concernant les visiteurs n’est enregistrée, partagée ou utilisée à des fins d’analyse, de suivi ou de communication. 
         </p> 
+
+
+
         <br> <p>Sources 
-        <br>1 
-        <br>2 
-        <br>3 
+        <br><br>1 
+        <br>You Suffer - Napalm Death : ℗ 1987 Earache Records Ltd
+
+        <br>Shri Ram Charit Manas: Pt.1 - JAGADEESH PILLAI : Source: Onam Creations © 2023 TRADITIONAL ℗ 2023 JAGADEESH PILLAI 
+
+
+        <br><br>2 
+        <br>Lien vers le code ayant permis de faire le graphique : <a href="https://www.chartjs.org/docs/latest/samples/bar/vertical.html">https://www.chartjs.org/docs/latest/samples/bar/vertical.html</a>
+
+
+
+        <br>Despacito - Luis Fonsi, Daddy Yankee : UMLE - Latino, Pulse Publishing Administration, Sony Music Publishing 
+        
+        <br>Stay (with Justin Bieber) - The Kid LAROI, Justin Bieber : Columbia, Pulse Publishing Administration, Universal Music Publishing, Warner Chappell Music 
+
+        <br>Old Town Road (feat.Billy Ray Cyrus) Remix - Lil Nas X, Billy Ray Cyrus : Columbia, Kobalt Music Publishing
+
+        <br> luther (with sza) - Kendrick Lamar, SZA : Source: pgLang, under exclusive license to Interscope Records, BMG Publishing, Sony Music Publishing, Universal Music Publishing
+
+
+        <br><br>3 
+        Lien vers le code ayant permis de réaliser le graphique :
+        <a href="https://www.chartjs.org/docs/latest/charts/doughnut.html">https://www.chartjs.org/docs/latest/charts/doughnut.html</a>
+        <br>
+        Lien vers la source des données sur l’impact de Tiktok sur le Billboard Global 200 en 2024 : <a href="https://newsroom.tiktok.com/tiktok-and-luminate-release-latest-music-impact-report?lang=en">https://newsroom.tiktok.com/tiktok-and-luminate-release-latest-music-impact-report?lang=en</a>
+
+        <br> Beat Automotivo Tan Tan Tan Viral - WZ Beat : Source: WZ Beat
         </p> 
         </div> 
         </div>
