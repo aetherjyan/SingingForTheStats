@@ -33,10 +33,6 @@
 
 /*conclusion*/
 
-.conclusion-wrapper {
-  
-}
-
 section.conclusion {
   height: 50svh;
   width: 100svw;
@@ -61,6 +57,5 @@ section.conclusion {
 
 section.conclusion .content {
   max-width: 1280px;
-  height: 100%;
   row-gap: 24px;
 }
