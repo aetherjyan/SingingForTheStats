@@ -143,10 +143,6 @@
 
 /* Trivia */
 
-#chap-1 .longuest-song {
-    grid-column: 4 / 12;
-}
-
 .first-year,
 .last-year {
     position: absolute;

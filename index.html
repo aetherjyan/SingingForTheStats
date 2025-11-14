@@ -1,202 +1,39 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singing for the Stats</title>
-  <link rel="stylesheet" href="./style/global.css">
-  <link rel="stylesheet" href="./style/hero.css">
-  <link rel="stylesheet" href="./style/chap-1.css">
-  <link rel="stylesheet" href="./style/chap-3.css">
-  <link rel="stylesheet" href="./style/chap-2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap"
-    rel="stylesheet">
+    <meta charset="UTF-8">
+    <html lang="fr">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singing for the Stats</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Unbounded:wght@200..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/hero.css">
+    <link rel="stylesheet" href="./style/chap-1.css">
+    <link rel="stylesheet" href="./style/chap-3.css">
+    <link rel="stylesheet" href="./style/chap-2.css">
+    <link rel="stylesheet" href="./style/intro-ccl.css">
+    <link rel="icon" type="image/x-icon" href="/assets/media/logo/Favicon.svg">
 </head>
 
 <body>
-  <header>
-    <div class="navigation">
-      <nav class="menu">
-        <a href="index.html"><img src="assets/media/logo/logonav.png" alt="Logo Singing For The Stats"></a>
-        <ul>
-          <li><a href="#intro">Intro</a></li>
-          <li><a href="#chap-1">I</a></li>
-          <li><a href="#chap-2">II</a></li>
-          <li><a href="#chap-3">III</a></li>
-          <li><a href="#Outro">Outro</a></li>
-        </ul>
-      </nav>
-    </div>
-
-    <h1>L’industrie musicale est-elle en train de devenir performative ?</h1>
-    <div id="hero"></div>
-  </header>
-
-  <main>
-
-
-
-    <article>
-
-<section class="introduction-section">
-  <div class="introduction">
-    <div class="window-bar">
-      <span class="window-title">INTRODUCTION</span>
-      <span class="window-title">INTRO_SYNTH</span>
-    </div>
-
-    <h2>Introduction</h2>
-    <p>
-      L'industrie musicale englobe la création, la production, la distribution et la commercialisation de la musique. 
-      Elle est en constante évolution, influencée par les changements technologiques et les habitudes de consommation du public. 
-      Aujourd’hui avec les réseaux sociaux, l’émergence des nouveaux artistes et l’évolution de l’industrie, on peut se demander 
-      si l’industrie musicale est-elle en train de devenir performative ?
-    </p>
-  </div>
-</section>
-
-
-
-
-
-      <section class="chapter" id="chap-1">
-        <section class="description">
-          <span class="chapter-number">I</span>
-          <h2>Des titres de plus en plus courts</h2>
-          <div class="description-content">
-            <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des
-              chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard
-              pouvait atteindre jusqu’à 8 minutes, pour une chanson comme “American Pie” de Don McLean,
-              dans les années 70... Aujourd'hui, la plupart des chansons pop effleurent à peine les 2
-              minutes 30.</p>
-            <p>C’est en 2018 que la tendance s'inverse pour des hits à plus courte durée. Ce phénomène est
-              popularisé principalement via des artistes tel que Lil Nas X et ses titres “Old Town Road”
-              et “Panini” ; qui effleurent à peine 2 minutes au total.<br>
-              En effet, qui dit musique plus courte dit plus de valeur de replay et donc plus de streams
-              au compteur.</p>
-          </div>
-        </section>
-        <section class="chart">
-          <h3>Évolution de la durée moyenne d’une chanson chaque année (2000-2023)¹</h3>
-          <div class="chart-window">
-            <span class="window-title">music_duration_evolution</span>
-            <div class="chart-container">
-              <canvas id="song-duration" height="640"></canvas>
-            </div>
-          </div>
-          <div class="controller-window">
-            <div class="window-titlebar">
-              <span class="window-title">YEAR_FX</span>
-            </div>
-            <div class="slider-container">
-              <div class="slider-rail">
-                <input id="year-slider" type="range" min="0" step="1" value="0" list="steplist" />
-                <div id="current-year" aria-hidden="true">—</div>
-                <p id="first-year">1999</p>
-                <p id="last-year">2023</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="trivia">
-          <h2 id="" class="trivia-heading">Trivia</h2>
-          <section class="trivia-card" id="shortest-song">
-            <div class="preview">
-              <iframe src="https://www.youtube.com/embed/_-ywSPWu3K8?enablejsapi=1&rel=0&controls=0&modestbranding=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-              </iframe>
-            </div>
-            <div class="info">
-              <p class="pill">Fun Fact</p>
-              <h3>1,316 secondes</h3>
-              <p>C’est la durée de la chanson la plus courte jamais enregistrée². Intitulée, “You Suffer”et réalisée par
-                le groupe de grindcore brit annique Napalm Death, elle comporte uniquement brièvement les paroles “You
-                suffer - but why ?”.</p>
-            </div>
-          </section>
-          <section class="trivia-card" id="longuest-song">
-            <div class="preview">
-              <img src="./assets/media/trivia/indian poem.png" alt="">
-            </div>
-            <div class="info">
-              <p class="pill">Fun Fact</p>
-              <h3>138 heures</h3>
-              <p>À l’opposé se trouve le poème “Shri Ramcharitmanas” de l’artiste indien Dr Pillai ; dont
-                l’enregistrement détient le record du plus long enregistré³ en cumulant 138 h 41 m et 20 s. Celui-ci est
-                tellement long qu’il a été découper en plusieurs titres pour tenir sur les plateformes de streaming !
-              </p>
-            </div>
-          </section>
-        </section>
-      </section>
-      <section class="chapter" id="chap-2">
-        <section description>
-          <span class="chapter-number">II</span>
-          <h2>La course au collaborations</h2>
-          <div class="description-content">
-            <p> L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution exponentielle
-              des featuring musicaux.
-              Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs
-              artistes. Les feats sont aujourd’hui utilisé à des fins marketing.</p>
-
-            <p>En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de chaque
-              interprète va profiter aux maisons de disques et aux artistes.
-              Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en
-              notoriété.
-              Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent les
-              collaborations dans les charts.</p>
-
-          </div>
-
-
-        </section>
-<!--
-<section class="chart2">
-    <div class="chart-window">
-      <span class="window-title">TOTAL_FT_RATIO_EVOLUTION</span>-->
-
-
-
-<section class="chart2">
-    <div class="chart-window">
-        <span class="window-title">TOTAL_FT_RATIO_EVOLUTION</span>
-        <div id="featuring"></div>
-    </div>
-        <h3>Évolution du total de featurings parmi les chansons les plus populaires de chaque année.</h3>
-
-</section>
-
-<div class="infobulle"></div>
-
-
-
-
-
-
-
-
-        <!--
-        <section class="chart2">
-        <h3>Évolution du total de featurings parmi les chansons les plus populaires de chaque année.</h3>
-        <div class="chart-window">
-        <span class="window-title">TOTAL_FT_RATIO_EVOLUTION</span>
-
-        <canvas id="graphique" width="400" height="200"></canvas>
-
+    <header id="top">
+        <div aria-hidden="true" class="navigation">
+            <nav class="menu">
+                <a href="index.html"><img src="assets/media/logo/logo-vertical.svg"
+                        alt="Haut de page - Singing For The Stats"></a>
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#chap-1">I</a></li>
+                    <li><a href="#chap-2">II</a></li>
+                    <li><a href="#chap-3">III</a></li>
+                    <li><a href="#conclusion">Outro</a></li>
+                </ul>
+            </nav>
         </div>
-        </section>-->
-
-
-
-
-
-        <!--- <h1>II</h1>
-    <header>
         <div class="title-wrapper">
             <h1 class="text-slide-in">L’industrie musicale est-elle en train de devenir performative ?</h1>
         </div>
@@ -204,7 +41,7 @@
             <p class="text-slide-in">Défiler vers le bas pour en savoir plus</p>
             <img src="./assets/media/icons/Scroll Down Icon.svg" alt="">
         </a>
-        <div class="hero">
+        <div class="hero" aria-hidden="true">
             <img id="flashes" src="assets/media/hero/Camera-Flashes.png" alt="">
             <img id="front" src="./assets/media/hero/Front.svg" alt="">
 
@@ -214,18 +51,43 @@
             <img id="stats-up" src="./assets/media/hero/Stats Up.svg" alt="">
         </div>
     </header>
+
     <main>
         <article>
-            <div class="trackhead">
+            <div class="trackhead" aria-hidden="true">
                 <img id="head-content" src="./assets/media/hero/Head.svg" alt="">
             </div>
-            <section class="intro" id="intro">
 
+            <section class="intro" id="intro">
+                <div class="intro-window">
+                    <div class="window-titlebar" aria-hidden="true">
+                        <span class="window-title">INTRODUCTION</span>
+                        <span class="window-title">INTRO_SYNTH</span>
+                    </div>
+                    <div class="content">
+                        <h2>Introduction</h2>
+                        <p>
+                            L'industrie musicale englobe la création, la production, la distribution et la
+                            commercialisation
+                            de la musique.
+                            Elle est en constante évolution, influencée par les changements technologiques et les
+                            habitudes
+                            de consommation du public.
+                            Aujourd’hui avec les réseaux sociaux, l’émergence des nouveaux artistes et l’évolution de
+                            l’industrie, on peut se demander
+                            si l’industrie musicale est-elle en train de devenir performative ?
+                        </p>
+                    </div>
+                </div>
             </section>
+
             <section class="chapter" id="chap-1">
+
                 <section class="description">
-                    <span class="chapter-number">I</span>
-                    <h2 class="text-slide-in">Des titres de plus en plus courts</h2>
+                    <h2 class="text-slide-in">
+                        <span class="chapter-number">I</span>
+                        Des titres de plus en plus courts
+                    </h2>
                     <div class="description-content">
                         <p>Alors que les chansons pouvaient aller jusqu'à 5 minutes dans les années 50, le phénomène des
                             chansons à durée réduite n'a cessé de croire depuis 2018. En effet, le classement Billboard
@@ -239,24 +101,29 @@
                             au compteur.</p>
                     </div>
                 </section>
+
                 <section class="chart">
-                    <h3 class="text-slide-in">Évolution de la durée moyenne d’une chanson chaque année (2000-2023)¹</h3>
+                    <h3 class="text-slide-in">L'évolution de la durée moyenne d’une chanson de 1999 à 2023<a
+                            class="reference" title="Références et sources dans les mentions légales"
+                            href="#footer">¹</a></h3>
                     <div class="chart-window slide-in">
-                        <span class="window-title">music_duration_evolution</span>
+                        <span class="window-title" aria-hidden="true">music_duration_evolution</span>
                         <div class="chart-container">
                             <canvas id="song-duration" height="640"></canvas>
                         </div>
                     </div>
                     <div class="controller-window slide-in">
                         <div class="window-titlebar">
-                            <label class="window-title" for="year-slider">YEAR_FX</label>
+                            <p class="window-title" aria-hidden="true">YEAR_FX</p>
                         </div>
                         <div class="slider-container">
                             <div class="slider-rail">
-                                
-                                <input class="year-slider" id="year-slider" type="range" orient="vertical" min="0"
-                                    max="24" step="1" value="0" />
-                                <div class="ticks">
+                                <label for="year-slider" id="year-slider-label" class="hidden">Réglage de la progression
+                                    d'année en année</label>
+                                <input class="year-slider" aria-labelledby="year-slider-label" name="year-slider"
+                                    id="year-slider" type="range" orient="vertical" min="0" max="24" step="1"
+                                    value="0" />
+                                <div class="ticks" aria-hidden="true">
                                     <span class="top-year">2023 -</span>
                                     <span>2022 -</span>
                                     <span>2021 -</span>
@@ -287,9 +154,18 @@
                         </div>
                     </div>
                 </section>
+
                 <section class="trivia">
-                    <h2 id="" class="trivia-heading">Trivia</h2>
-                    <section class="trivia-card shortest-song slide-in" id="shortest-song">
+                    <h3 id="" class="trivia-heading hidden">Trivia</h3>
+                    <section class="trivia-card slide-in">
+                        <div class="info">
+                            <p class="pill">Fun Fact</p>
+                            <h4>1,316 secondes</h4>
+                            <p>C’est la durée de la chanson la plus courte jamais enregistrée. Intitulée, “You
+                                Suffer”et réalisée par le groupe de grindcore brit annique Napalm Death, elle comporte
+                                uniquement brièvement les paroles “You suffer - but why ?”.<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">²</a></p>
+                        </div>
                         <div class="preview">
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/5oD2Z1OOx1Tmcu2mc9sLY2?utm_source=generator"
@@ -297,15 +173,17 @@
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
+                    </section>
+                    <section class="trivia-card right slide-in">
                         <div class="info">
                             <p class="pill">Fun Fact</p>
-                            <h3>1,316 secondes</h3>
-                            <p>C’est la durée de la chanson la plus courte jamais enregistrée². Intitulée, “You
-                                Suffer”et réalisée par le groupe de grindcore brit annique Napalm Death, elle comporte
-                                uniquement brièvement les paroles “You suffer - but why ?”.</p>
+                            <h4>138 heures</h4>
+                            <p>À l’opposé se trouve le poème “Shri Ramcharitmanas” de l’artiste indien Dr Pillai ; dont
+                                l’enregistrement détient le record du plus long enregistré³ en cumulant 138 h 41 m et 20
+                                s. Celui-ci est tellement long qu’il a été découper en plusieurs titres pour tenir sur
+                                les plateformes de streaming !<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">³</a></p>
                         </div>
-                    </section>
-                    <section class="trivia-card longuest-song slide-in" id="longuest-song">
                         <div class="preview">
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/77sb4KLyDEh7123qeCPAi7?utm_source=generator"
@@ -313,173 +191,258 @@
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
+                    </section>
+                </section>
+            </section>
+
+            <section class="chapter" id="chap-2">
+
+                <section class="description">
+                    <h2>
+                        <span class="chapter-number">II</span>
+                        La course au collaborations
+                    </h2>
+                    <div class="description-content">
+                        <p> L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution
+                            exponentielle
+                            des featuring musicaux.
+                            Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs
+                            artistes. Les feats sont aujourd’hui utilisé à des fins marketing.</p>
+
+                        <p>En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de
+                            chaque
+                            interprète va profiter aux maisons de disques et aux artistes.
+                            Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en
+                            notoriété.
+                            Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent
+                            les
+                            collaborations dans les charts.</p>
+                    </div>
+                </section>
+
+                <section class="chart2">
+                    <div class="chart-window">
+                        <span aria-hidden="true" class="window-title">TOTAL_FT_RATIO_EVOLUTION<a class="reference"
+                                title="Références et sources dans les mentions légales" href="#footer">⁴</a></span>
+                        <div id="featuring"></div>
+                    </div>
+                    <h3>L'évolution du nombre de featurings de 0000 à 0000 dans le Billboard __<a class="reference"
+                            title="Références et sources dans les mentions légales" href="#footer">⁴</a></h3>
+                </section>
+
+                <section class="trivia">
+                    <h3 id="" class="trivia-heading">Les collaborations font battrent des records</h3>
+                    <section class="trivia-card right">
+                        <div class="info">
+                            <p class="pill"> Fun Fact</p>
+                            <h4>8 858 423 126 vues</h4>
+                            <p>“Despacito” de Luis Fonsi, Daddy Yanke et Justin Bieber est la collaboration la plus
+                                grosse de tous les temps. Bien qu'ayant tenu lui aussi 16 semaines au Billboard, le clip
+                                accumule les 8 milliards et le total de streams dépasse lui les 2 000 000 000 sur
+                                Spotify. Le remix réalisé avec Justin Bieber se rapproche quant à lui des 700 millions
+                                de vues. La chanson à elle seule aurait générée plus 18,2 millions de dollars grâce aux
+                                revenus YouTube.<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">⁵</a></p>
+                        </div>
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/6habFhsOp2NvshLv26DqMb?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                    </section>
+                    <section class="trivia-card">
+                        <div class="info">
+                            <p class="pill"> Fun Fact</p>
+                            <h4>3 718 355 601 écoutes</h4>
+                            <p>La collaboration entre The Kid Laroi et Justin Bieber sur le tube "STAY" a réussi à
+                                battre un record. En effet, celle-ci est actuellement le featuring le plus écouté sur
+                                Spotify ; en ayant atteint la barre du premier milliard en seulement 118 jours. Ils
+                                restent suivis de près par les Chainsmokers et leurs hits "Closer" avec Hasley à 3 480
+                                691 099 écoutes et "Something Just Like This" avec Coldplay à 3 406 945 050 écoutes.<a
+                                    class="reference" title="Références et sources dans les mentions légales"
+                                    href="#footer">⁶</a></p>
+                        </div>
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/5HCyWlXZPP0y6Gqq8TgA20?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                    </section>
+                    <section class="trivia-card right">
+                        <div class="info">
+                            <p class="pill"> Fun Fact</p>
+                            <h4>19 semaines au sommet du Billboard</h4>
+                            <p>Le featuring ayant eu le plus de succès selon le Billboard Hot est “Old Town Road” de Lil
+                                Nas X & Billy Ray Cyrus. Il dépasse ainsi “One Sweet Day” de Boyz II Men et Mariah Carey
+                                (16 semaines), "Uptown Funk" de Bruno Mars & Mark Ronson (14 semaines) ou encore
+                                "Blurred Lines" de Robin Thicke, Pharell Williams et T.I (12 semaines).</p>
+                            <p>Un autre chiffre record est lui détenu par le titre "Luther" de SZA & Kendric Lamar ; qui
+                                a parvenu à tenir la première place pendant plus de 23 semaines dans le Billboard Hot
+                                R&B / Hip-Hop.<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">⁷</a></p>
+                        </div>
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/2YpeDb67231RjR0MgVLzsG?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/45J4avUb9Ni0bnETYaYFVJ?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                    </section>
+
+                </section>
+
+            </section>
+
+            <section class="chapter" id="chap-3">
+                <section class="description">
+                    <h2>
+                        <span class="chapter-number">III</span>
+                        La croissance de l’impact des réseaux sociaux
+                    </h2>
+                    <div class="description-content">
+                        <p>Les réseaux sociaux jouent un rôle crucial dans le milieu musical mondial de nos jours.
+                            Selon une dernière analyse réalisée en 2024, les engagements TikTok ont un impact positif
+                            sur
+                            l’activité de streaming d’un artiste, l’engouement de TikTok mène à un succès mondial des
+                            musiques
+                            et les superfans ont plus de chances d’être des utilisateurs TikTok.</p>
+                        <p>Désormais, une grande majorité des sons qui entrent dans le Billboard Global 200 sont des
+                            titres
+                            qui sont devenus “viraux” (i.e. qui ont eu une période avec un engagement élevé) sur TikTok
+                            avant.
+                            (En outre, certains sont devenus viraux au moment même où ils sont entrés dans le classement
+                            ou peu
+                            après,
+                            et très peu n’ont eu leur moment viral.)</p>
+                    </div>
+                </section>
+
+                <!-- === Partie basse (titre + graphique côte à côte) === -->
+                <section class="chart">
+                    <h3>L’impact de Tiktok sur le Billboard Global 200 (en 2024)<a class="reference"
+                            title="Références et sources dans les mentions légales" href="#footer">⁸</a></h3>
+                    <div class="chart-window">
+                        <div class="chart-container">
+                            <canvas id="tiktok"></canvas>
+                            <svg id="tiktok-button" class="chart-overlay-button" viewBox="0 0 181 179" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <ellipse cx="63.9898" cy="64.0102" rx="63.9898" ry="64.0102"
+                                    transform="matrix(0.536393 0.843968 0.84393 -0.536453 3.35214 68.7366)"
+                                    fill="#919297" />
+                                <path
+                                    d="M38.942 121.938C57.4538 151.064 96.079 159.663 125.215 141.143C154.35 122.623 162.962 83.9967 144.45 54.87C125.939 25.7432 87.3122 17.1439 58.1765 35.6643C29.041 54.1848 20.4302 92.8109 38.942 121.938Z"
+                                    stroke="white" stroke-opacity="0.05" stroke-width="3" />
+                                <path
+                                    d="M40.0354 111.764C36.8519 113.787 34.8221 117.206 34.5691 120.969L34.3061 124.882L37.9604 126.305C41.4754 127.674 45.432 127.287 48.6154 125.263L99.3651 93.005C103.093 90.6355 104.194 85.6927 101.825 81.9649C99.4554 78.2371 94.5128 77.1359 90.7851 79.5054L40.0354 111.764Z"
+                                    fill="#55565C" />
+                                <path
+                                    d="M38.5051 124.908C41.575 126.103 45.0303 125.764 47.8106 123.997L98.5606 91.7385C101.589 89.8134 102.483 85.7985 100.559 82.77C98.6338 79.7414 94.6185 78.8464 91.59 80.7712L40.8399 113.03C38.0595 114.797 36.2871 117.783 36.0661 121.07L35.8763 123.885L38.5051 124.908Z"
+                                    stroke="white" stroke-opacity="0.05" stroke-width="3" />
+                            </svg>
+
+                        </div>
+
+                        <div id="chart-caption">
+                            <h4 class="caption-quota big-data">04 %</h4>
+                            <p class="caption-description">des musiques ne sont pas devenues virales.</p>
+                        </div>
+                    </div>
+
+
+                    </div>
+                </section>
+
+                <section class="trivia">
+                    <h3 id="" class="trivia-heading">Des chiffres qui donnent le vertige</h3>
+                    <section class="trivia-card slide-in">
                         <div class="info">
                             <p class="pill">Fun Fact</p>
-                            <h3>138 heures</h3>
-                            <p>À l’opposé se trouve le poème “Shri Ramcharitmanas” de l’artiste indien Dr Pillai ; dont
-                                l’enregistrement détient le record du plus long enregistré³ en cumulant 138 h 41 m et 20
-                                s. Celui-ci est tellement long qu’il a été découper en plusieurs titres pour tenir sur
-                                les plateformes de streaming !</p>
+                            <h4>44,6 millions</h4>
+                            <p>C’est le nombre total de vidéos qui ont utilisées le son TikTok "Beat Automotivo (Tan Tan
+                                Tan Viral)" ; ce qui en fait donc le son TikTok le plus utilisé de tous les temps. Grâce
+                                à cela, la musique originale du titre éponyme du son a pu atteindre 8 millions de stream
+                                sur Spotify et 3 millions de vues sur YouTube.<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">⁹</a></p>
+                        </div>
+                        <div class="preview">
+                            <iframe data-testid="embed-iframe" style="border-radius:12px"
+                                src="https://open.spotify.com/embed/track/78TvkItRPxnA5S7Ok2f7Ug?utm_source=generator"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
                         </div>
                     </section>
                 </section>
             </section>
-            <section class="chapter" id="chap-2">
-                <h1>II</h1>
-                <h2>La course aux collaborations</h2>
 
-                <div class="paragraphe">
-                    <p class="gauche">
-                        L’un des plus grands changements dans l’industrie musicale à aussi été l’évolution exponentielle
-                        des featuring musicaux.
-                        Ce mot est généralement employé pour désigner une collaboration entre deux ou plusieurs
-                        artistes. Les feats sont aujourd’hui utilisé à des fins marketing.
-                    </p>
-                    <p class="droite">
-                        En effet, la popularité et les ventes d’un morceau en alliant les publics respectifs de chaque
-                        interprète va profiter aux maisons de disques et aux artistes.
-                        Un autre cas de figure, certains artistes méconnus vont pouvoir gagner en popularité et en
-                        notoriété.
-                        Pourtant les featuring sont néanmoins populaires auprès des fans qui écoutent et propulsent les
-                        collaborations dans les charts.
+            <section class="conclusion">
+                <div class="content">
+                    <h2>Nos derniers mots</h2>
+                    <p>
+                        Face à la multiplication des morceaux courts, à la viralité des sons sur les réseaux sociaux et
+                        à l’augmentation des collaborations,
+                        l’industrie musicale semble évoluer vers une logique où la performance, la visibilité et
+                        l’impact immédiat priment sur la simple création.
+                        Ces transformations invitent à réfléchir sur la manière dont la musique est produite et
+                        consommée.
                     </p>
                 </div>
+            </section>
 
-                <div class="graphique-titre">
+            <div class="track-bg" aria-hidden="true">
+                <div class="track-channel"></div>
+                <div class="track-channel"></div>
+                <div class="track-channel"></div>
+                <div class="track-channel"></div>
+                <div class="track-channel"></div>
+            </div>
+        </article>
+    </main>
 
-                    <div class="graphique-conteneur">
-                        <div class="fond_du_graphique">
-                            <img src="fond_graphique.svg" class="fond-svg">
-                            <canvas id="graphique" width="400" height="200"></canvas>
-                        </div>
-
-                        <div class="titre-droite">
-                            <h3>Évolution du total de featurings parmi les chansons les plus populaires de chaque année
-                            </h3>
+    <footer>
+        <section class="footer-elements">
+            <a class="footer-logo" href="#top">
+                <img src="assets/media/logo/logo-horizontal.svg" alt="Logo du site Singing for the Stats">
+            </a>
+            <div class="footer-text" id="footer">
+                <p class="copyright">
+                    © 2025 Singing for the Stats
+                </p>
+                <p class="popup-mentions" id="popup-mentions">
+                    ¹²³⁴⁵⁶⁷⁸⁹Mentions légales
+                </p>
+                <!-- Popup Overlay global -->
+                <div id="popup-overlay" class="popup-overlay" style="display: none;">
+                    <div class="popup">
+                        <button class="popup-close" onclick="closePopup()">
+                            <p><b>FERMER</b></p>
+                        </button>
+                        <div id="popup-content">
+                            <!-- Le contenu sera injecté ici par le JS -->
                         </div>
                     </div>
-                </div> --->
-
-
-
-        <section class="trivia">
-          <h2 id="" class="trivia-heading">Trivia</h2>
-          <section class="trivia-card" id="longuest-song">
-            <div class="preview">
-              <div class="info">
-                <p class="pill"> Fun Fact</p>
-                <h3>16 semaines dans le BillBoard</h3>
-                <p>Le featuring ayant eu le plus de succès est “One Sweet Day” de Boyz II Men et Mariah Carey
-                  qui a dépassé “Despacito” de Luis Fonsi et “Old Town Road” de Lil Nas X.</p>
-              </div>
-              <img src="./assets/media/trivia/mariah.png" alt="">
+                </div>
             </div>
-          </section>
-
         </section>
+    </footer>
 
+    <!-- CDN & script import -->
 
-        <!--
-                <div class="trivia">
-                    <H3>16 semaines dans le BillBoard</H3>
-                    <p>Le featuring ayant eu le plus de succès est “One Sweet Day” de Boyz II Men et Mariah Carey
-                        qui a dépassé “Despacito” de Luis Fonsi’s et “Old Town Road” de Lil Nas X.</p>--->
-
-      </section>
-
-
-      <section class="chapter" id="chap-3">
-        <section class="description">
-          <span class="chapter-number">III</span>
-          <h2>La croissance de l’impact des réseaux sociaux</h2>
-          <div class="description-content">
-            <p>Les réseaux sociaux jouent un rôle crucial dans le milieu musical mondial de nos jours.
-              Selon une dernière analyse réalisée en 2024, les engagements TikTok ont un impact positif sur
-              l’activité de streaming d’un artiste, l’engouement de TikTok mène à un succès mondial des musiques
-              et les superfans ont plus de chances d’être des utilisateurs TikTok.</p>
-            <p>Désormais, une grande majorité des sons qui entrent dans le Billboard Global 200 sont des titres
-              qui sont devenus “viraux” (i.e. qui ont eu une période avec un engagement élevé) sur TikTok avant.
-              (En outre, certains sont devenus viraux au moment même où ils sont entrés dans le classement ou peu
-              après,
-              et très peu n’ont eu leur moment viral.)</p>
-          </div>
-        </section>
-
-        <!-- === Partie basse (titre + graphique côte à côte) === -->
-        <section class="chart">
-          <h3>L’impact de Tiktok sur le Billboard Global 200 (en 2024)</h3>
-          <div class="chart-window">
-            <div class="chart-container">
-              <canvas id="tiktok"></canvas>
-              <svg id="tiktok-button" class="chart-overlay-button" viewBox="0 0 181 179" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="63.9898" cy="64.0102" rx="63.9898" ry="64.0102"
-                  transform="matrix(0.536393 0.843968 0.84393 -0.536453 3.35214 68.7366)" fill="#919297" />
-                <path
-                  d="M38.942 121.938C57.4538 151.064 96.079 159.663 125.215 141.143C154.35 122.623 162.962 83.9967 144.45 54.87C125.939 25.7432 87.3122 17.1439 58.1765 35.6643C29.041 54.1848 20.4302 92.8109 38.942 121.938Z"
-                  stroke="white" stroke-opacity="0.05" stroke-width="3" />
-                <path
-                  d="M40.0354 111.764C36.8519 113.787 34.8221 117.206 34.5691 120.969L34.3061 124.882L37.9604 126.305C41.4754 127.674 45.432 127.287 48.6154 125.263L99.3651 93.005C103.093 90.6355 104.194 85.6927 101.825 81.9649C99.4554 78.2371 94.5128 77.1359 90.7851 79.5054L40.0354 111.764Z"
-                  fill="#55565C" />
-                <path
-                  d="M38.5051 124.908C41.575 126.103 45.0303 125.764 47.8106 123.997L98.5606 91.7385C101.589 89.8134 102.483 85.7985 100.559 82.77C98.6338 79.7414 94.6185 78.8464 91.59 80.7712L40.8399 113.03C38.0595 114.797 36.2871 117.783 36.0661 121.07L35.8763 123.885L38.5051 124.908Z"
-                  stroke="white" stroke-opacity="0.05" stroke-width="3" />
-              </svg>
-
-            </div>
-
-            <div id="chart-caption">
-              <p id="caption-quota" class="big-number">04 %</p>
-              <p id="caption-description">des musiques ne sont pas devenues virales.</p>
-            </div>
-          </div>
-
-
-          </div>
-        </section>
-    </article>
-  </main>
-
-  <footer>
-    <section class="footer-elements">
-      <div class="footer-logo">
-        <img src="assets/media/logo/Logofooter.png" alt="Logo du site Singing for the Stats">
-      </div>
-      <div class="footer-text">
-        <p class="copyright">
-          © 2025 Singing for the Stats
-        </p>
-        <p class="popup-mentions" id="popup-mentions">
-          Mentions légales
-        </p>
-      </div>
-    </section>
-  </footer>
-
-
-
-  <!-- CDN & script import -->
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
-    integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
-  <script src="./scripts/song-duration.js"></script>
-  <script src="./scripts/tiktok.js"></script>
-  <script src="./scripts/script.js"></script>
-
-
-
-  <!-- Popup Overlay global -->
-  <div id="popup-overlay" class="popup-overlay" style="display: none;">
-    <div class="popup">
-      <button class="popup-close" onclick="closePopup()">
-        <p><b>FERMER</b></p>
-      </button>
-      <div id="popup-content">
-        <!-- Le contenu sera injecté ici par le JS -->
-      </div>
-    </div>
-  </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
+        integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
+    <script src="./scripts/song-duration.js"></script>
+    <script src="./scripts/tiktok.js"></script>
+    <script src="./scripts/script.js"></script>
 
 </body>
 
