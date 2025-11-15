@@ -3,36 +3,62 @@
 #chap-3 .chart-window {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     position: relative;
     grid-column: 6 / 12;
+    background: var(--Cyan-25);
+    overflow: visible;
+}
+
+#chap-3 .window-titlebar {
+    border-bottom: 2px solid var(--Black-25);
+    background: var(--Cyan-25);
+    padding: 24px;
 }
 
 #chap-3 .chart .left-side {
-    grid-column: 2 / 6;   
+    grid-column: 2 / 6;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; 
 }
 
 #chap-3 #tiktok {
     aspect-ratio: 1 / 1;
 }
 
-#chap-3 .chart-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
+#chap-3 .chart-switch {
+    position: absolute;
+    z-index: 2;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
-
-.chart-overlay-button {
+#chap-3 .scroll-wheel {
+    width: 136px;
+    aspect-ratio: 1 / 1;
     display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 150px; /* Taille ajustée pour couvrir le centre du graphique */
-    height: 150px;
-    cursor: pointer;
-    z-index: 10; /* Assure que le bouton est au-dessus du canvas */
+}
+
+#chap-3 .chart-container {
+    flex-direction: column;
+    gap: 16px;
+    padding: 80px;
+    margin: 0;
+    position: relative;
+    overflow: visible;
+}
+
+#chap-3 figcaption {
+    text-align: center;
+    text-wrap: balance;
 }
 
 #chart-caption {

@@ -1,11 +1,18 @@
 /*partie graphique dans le chapitre 2*/
 
-.chart2 .chart-window {
+#chap-2 .chart .chart-window {
   grid-column: 2 / 8;  
 }
 
-.chart2 h3 {
+#chap-2 .chart h3 {
   grid-column: 8 / 12;
+}
+
+#chap-2 .window-titlebar {
+  border-bottom: 2px solid var(--Black-25);
+  background: var(--Cyan-50);
+  padding: 24px;
+  color: var(--Black-25);
 }
 
 

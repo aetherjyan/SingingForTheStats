@@ -15,12 +15,11 @@ fetch("./data/duration_evolution.json")
     })
     .then(function (data) {
         DurationJsonData = data;
-        createChart(DurationJsonData, 'line');
-        initYearSlider(DurationJsonData); // initialiser le slider après création du chart
+        createSongDurationChart(DurationJsonData, 'line');
     });
 
 
-function createChart(data, type) {
+function createSongDurationChart(data, type) {
 
     const getCssVar = (name, fallback = '') => {
         const v = getComputedStyle(document.documentElement).getPropertyValue(name);
@@ -54,7 +53,7 @@ function createChart(data, type) {
         DisplayFont: getCssVar('--Display-Font', "'Geist Mono', 'Vercetti', monospace")
     };
 
-    const chartData = {
+    const songDurationChartData = {
         labels: data.map(row => row.year),
 
         datasets: [{
@@ -102,7 +101,7 @@ function createChart(data, type) {
 
     const config = {
         type: type,
-        data: chartData,
+        data: songDurationChartData,
         options: {
             scales: {
                 x: {
@@ -205,8 +204,6 @@ yearSlider.addEventListener('input', function (e) {
     const index = +e.target.value;
     updateChartLine(index);
 });
-chart.data.datasets[0].data = fullData.map((val, i) => i <= index ? val : null);
-chart.update();
 
 
 
