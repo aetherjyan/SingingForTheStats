@@ -31,7 +31,7 @@ mentionsLégales.addEventListener('click', () => {
         </p> 
         <br> <p>Sources 
         <br>1 
-        <br>2 
+        <br>2 Lien vers le code ayant permis de faire le graphique : [https://www.chartjs.org/docs/latest/samples/bar/vertical.html]
         <br>3 
         </p> 
         </div> 

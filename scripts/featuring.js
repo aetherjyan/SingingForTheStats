@@ -1,6 +1,9 @@
 const featuringDiv = document.getElementById("featuring");
+
 const canvas = document.createElement("canvas");
 canvas.id = "featuringChart";
+canvas.style.width = '100%';
+canvas.style.height = '400px'; 
 featuringDiv.appendChild(canvas);
 
 fetch('./data/feat.json')
@@ -9,9 +12,8 @@ fetch('./data/feat.json')
     const years = data.map(d => d["Année"]);
     const totalFeaturing = data.map(d => d["Total des featurings"]);
 
-    const ctx = document.getElementById("featuringChart").getContext("2d");
+    const ctx = canvas.getContext("2d");
 
-    // --- Paramètres des blocs ---
     const rectHeight = 50;
     const gap = 5;
     const displayHeight = rectHeight - gap;
@@ -19,20 +21,16 @@ fetch('./data/feat.json')
     const maxVal = Math.max(...totalFeaturing);
     const numRects = Math.ceil(maxVal / rectHeight);
 
-    // --- Tranches de couleur ---
     const colorSegments = [
-      { maxVal: 200, color: 'rgba(102, 187, 106, 0.9)' }, // Vert
-      { maxVal: 350, color: 'rgba(255, 238, 88, 0.9)' },  // Jaune
-      { maxVal: maxVal + rectHeight, color: 'rgba(54, 162, 235, 0.9)' } // Bleu/Orange
+      { maxVal: 200, color: 'rgba(255, 255, 255, 0.8)' },
+      { maxVal: 350, color: 'rgba(255, 255, 255, 0.8)' },
+      { maxVal: maxVal + rectHeight, color: 'rgba(255, 255, 255, 0.8)' }
     ];
 
-    // --- Création des datasets par bloc ---
     const datasets = [];
     for (let i = 0; i < numRects; i++) {
       const blockStartValue = i * rectHeight;
-
-      // Déterminer la couleur du bloc selon la tranche
-      let color = colorSegments[2].color; // Couleur par défaut
+      let color = colorSegments[2].color;
       if (blockStartValue < colorSegments[0].maxVal) color = colorSegments[0].color;
       else if (blockStartValue < colorSegments[1].maxVal) color = colorSegments[1].color;
 
@@ -40,13 +38,26 @@ fetch('./data/feat.json')
         label: `rect-${i}`,
         data: totalFeaturing.map(val => (val > blockStartValue ? displayHeight : 0)),
         backgroundColor: color,
-        borderRadius: 0,
+        borderWidth: 2,
         borderSkipped: false,
-        borderWidth: 0
+        borderRadius: 0,
       });
     }
+const glowBars = {
+  id: 'glowBars',
+  beforeDatasetDraw(chart) {
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.shadowColor = 'rgba(255,255,255,0.8)'; // glow blanc néon
+    ctx.shadowBlur = 40;                        // intensité glow
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+  },
+  afterDatasetDraw(chart) {
+    chart.ctx.restore(); // stop glow pour le reste (axes, labels)
+  }
+};
 
-    // --- Création du chart ---
     new Chart(ctx, {
       type: 'bar',
       data: {
@@ -55,19 +66,15 @@ fetch('./data/feat.json')
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
           tooltip: {
+            displayColors: false,
             enabled: true,
             callbacks: {
-              // Affiche uniquement le total pour chaque colonne
-              label: (context) => {
-                if (context.datasetIndex === datasets.length - 1) {
-                  return `Total: ${totalFeaturing[context.dataIndex]}`;
-                }
-                return '';
-              },
-              title: (context) => `Année ${years[context[0].dataIndex]}`
+              title: (context) => ` ${years[context[0].dataIndex]}`,
+              label: (context) => `Total de featurings : ${totalFeaturing[context.dataIndex]}`
             }
           }
         },
@@ -85,7 +92,8 @@ fetch('./data/feat.json')
             grid: { display: false }
           }
         }
-      }
+      },
+      plugins: [glowBars]
     });
   })
   .catch(error => console.error(error));
