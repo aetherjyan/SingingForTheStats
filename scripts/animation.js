@@ -108,7 +108,7 @@ Promise.all([
             trigger: "section.intro",
             scrub: 1,
             start: "25% 75%",
-            end: "75% 75%",
+            end: "75% 50%",
             toggleActions: "play none none reverse"
         },
         autoAlpha: 0,
