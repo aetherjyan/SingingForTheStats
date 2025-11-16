@@ -56,7 +56,8 @@ mentionsLégales.addEventListener('click', () => {
 
 
 <h3>Sources et crédits</h3>
-<p>Sources de données musicales
+<h3>Sources de données musicales</h3>
+<p>
     <ul>
         <li>¹ L'évolution de la durée moyenne d’une chanson de 1999 à 2023 <a href="https://www.kaggle.com/datasets/conorvaneden/best-songs-on-spotify-for-every-year-2000-2023/code">https://www.kaggle.com/datasets/conorvaneden/best-songs-on-spotify-for-every-year-2000-2023/code</a>  </li>
         <li>⁴ L'évolution du nombre de featurings de 2000 à 2023 dans le Billboard <a href="https://www.billboard.com/charts/hot-100/">https://www.billboard.com/charts/hot-100/</a> </li>
@@ -64,8 +65,10 @@ mentionsLégales.addEventListener('click', () => {
     </ul>
 </p>
 
-<p>Sources musicales
+<h3>Sources musicales</h3>
+<p>
 <ul>Lecteurs Spotify intégrés (les contenus restent hébergés par Spotify).
+<br>
 <li>You Suffer - Napalm Death ℗ 1987 Earache Records Ltd, <a href="https://open.spotify.com/intl-fr/track/5oD2Z1OOx1Tmcu2mc9sLY2?si=d308d93f739e45b4">https://open.spotify.com/intl-fr/track/5oD2Z1OOx1Tmcu2mc9sLY2?si=d308d93f739e45b4</a>  </li>
 <li>You Suffer - Napalm Death - Paroles de Genuis <a href="https://genius.com/Napalm-death-you-suffer-lyrics">https://genius.com/Napalm-death-you-suffer-lyrics</a>  </li>
 <li>Shri Ram Charit Manas: Pt.1 - JAGADEESH PILLAI : Source: Onam Creations © 2023 TRADITIONAL ℗ 2023 JAGADEESH PILLAI, <a href="https://open.spotify.com/intl-fr/track/77sb4KLyDEh7123qeCPAi7?si=af846294e47e4816">https://open.spotify.com/intl-fr/track/77sb4KLyDEh7123qeCPAi7?si=af846294e47e4816</a>  </li>
@@ -82,11 +85,12 @@ mentionsLégales.addEventListener('click', () => {
 
 
 
-<p>Images et visuels 
+<h3>Images et visuels</h3>
+<p> 
     <p>Images des pochettes d’albums :
 <br>Fournies par Spotify via l’API Spotify. Les images restent hébergées par Spotify. Les droits sur les pochettes appartiennent à leurs labels respectifs.
 </p>
-
+<br>
 <ul>
     <li>Couverture de l’album “Scum” par Napalm Death, image fournie via l’API Spotify (hébergée par Spotify), Source : Spotify.
 </li>
