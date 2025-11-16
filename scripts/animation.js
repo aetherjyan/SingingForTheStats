@@ -16,9 +16,19 @@ Promise.all([
 
     // ===== LENIS SMOOTH SCROLL INTEGRATION =====
 
-    const lenis = new Lenis();
+    const lenis = new Lenis({
+        // Désactiver le scroll initialement jusqu'à ce que l'animation hero soit terminée
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
 
     lenis.on('scroll', ScrollTrigger.update);
+
+    // Bloquer le scroll initialement
+    lenis.stop();
+    
+    // Bloquer aussi le scroll natif du navigateur
+    document.body.style.overflow = 'hidden';
 
     gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
@@ -177,7 +187,7 @@ Promise.all([
             },
             {
                 autoAlpha: 1,
-                y: 0,
+                x: 0,
                 rotationY: 0,
                 duration: 4,
                 ease: "expo.out",
@@ -203,6 +213,11 @@ Promise.all([
                 defaults: {
                     duration: 2,
                     ease: "power2.out",
+                },
+                onComplete: () => {
+                    // Réactiver le scroll une fois l'animation hero terminée
+                    lenis.start();
+                    document.body.style.overflow = '';
                 }
             }
 
@@ -447,9 +462,10 @@ Promise.all([
                 scrollTrigger: {
                     trigger: descriptionSection,
                     start: "top 75%",
-                    end: "bottom 25%",
+                    end: "bottom 50%",
                     toggleActions: "play none none reverse",
                     scrub: 1,
+                    markers: true,
                 }
             }
         );
