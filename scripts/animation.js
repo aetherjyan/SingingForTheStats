@@ -321,6 +321,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
         duration: 0.01,
     });
 
+    //NAV BAR
+
+    gsap.fromTo(".menu", {
+        autoAlpha: 0,
+        y: 100,
+    }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 2,
+        ease: "expo.out",
+        scrollTrigger: {
+            trigger: "main",
+            start: "top 75%",
+            toggleActions: "play none none none",
+            once: true,
+        },
+    });
+
     // TRIVIA-CARDS
 
     var triviaCards = gsap.utils.toArray(".trivia-card");
