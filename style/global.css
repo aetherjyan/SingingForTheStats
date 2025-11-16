@@ -359,64 +359,103 @@ footer {
 }
 
 /* Copyright + mentions légales */
-.copyright,
-.popup-mentions {
-    color: var(--Black);
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-/* Interaction du lien */
-
-.popup-mentions:hover {
-    opacity: 0.7;
-}
-
-
-/*** POPUP ***/
+/* --- OVERLAY : fond sombre derrière le popup --- */
 .popup-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(6px);
-    background-color: rgba(0, 0, 0, 0.4);
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 1000;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
 }
 
+/* --- POPUP (la boîte) --- */
 .popup {
-    background: white;
-    padding: 30px;
-    /*max-width: 1000px;*/
-    width: 90%;
-    max-height: 80vh;
+    background: transparent; /* On laisse la popup-content gérer le style */
+    width: 80%;
+    max-width: 900px;
+    max-height: 85vh;
     overflow-y: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    position: relative;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.popup p {
-    margin-bottom: 35px;
+/* --- CONTENU DU POPUP (boîte grise) --- */
+.popup-content {
+    width: 100%;
+    background: #4a4a4a;
+    color: white;
+    border-radius: 18px;
+    padding: 0; /* enlevé car le header doit toucher le bord */
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    font-family: "Inter", sans-serif;
 }
 
-.popup h2 {
-    margin-top: 10px;
+/* --- HEADER NOIR AVEC LE TITRE --- */
+.popup-content h3:first-of-type {
+    background: #2b2b2b;
+    margin: 0;
+    padding: 20px 30px;
+    font-size: 1.8rem;
+    border-radius: 18px 18px 0 0;
 }
 
-.popup-close {
+/* --- LES AUTRES TITRES --- */
+.popup-content h3 {
+    margin-top: 25px;
+    padding: 0 30px;
+    font-size: 1.3rem;
+}
+
+/* --- LES PARAGRAPHES --- */
+.popup-content p,
+.popup-content ul {
+    padding: 0 30px;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.popup-content ul {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* --- SCROLLING SMOOTH --- */
+.popup-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: #222;
+    border-radius: 10px;
+}
+
+/* --- BOUTON DE FERMETURE (CROIX) --- */
+.close-popup {
     position: absolute;
-    top: 10px;
-    right: 15px;
+    top: 25px;
+    right: 30px;
     background: transparent;
     border: none;
-    font-size: 20px;
     cursor: pointer;
+    color: white;
+    font-size: 22px;
+    z-index: 99999;
 }
+
+/* Effet hover */
+.close-popup:hover {
+    opacity: 0.7;
+}
+
 
 
 
