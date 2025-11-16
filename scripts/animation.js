@@ -14,6 +14,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     gsap.ticker.lagSmoothing(0);
+    
+    // Optimisation des performances : limiter la fréquence de rafraîchissement
+    ScrollTrigger.config({ limitCallbacks: true });
 
     // ======= GSAP ANIMATIONS ========
 
@@ -38,9 +41,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     trigger: leftSlideIn,
                     start: "top 75%",
                     end: "bottom 25%",
-                    scrub: true,
+                    scrub: 1, // Limiter à 1 frame pour meilleure performance
                     toggleActions: "play none none reverse",
-                }
+                },
+                force3D: true // Accélération GPU
             }
 
         );
@@ -67,9 +71,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     trigger: rightSlideIn,
                     start: "top 75%",
                     end: "bottom 25%",
-                    scrub: true,
+                    scrub: 1,
                     toggleActions: "play none none reverse",
-                }
+                },
+                force3D: true
             }
 
         );
@@ -80,7 +85,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.from(".intro-window", {
         scrollTrigger: {
             trigger: "section.intro",
-            scrub: true,
+            scrub: 1,
             start: "25% 75%",
             end: "75% 75%",
             toggleActions: "play none none reverse"
@@ -88,6 +93,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         autoAlpha: 0,
         ease: "none",
         y: 100,
+        force3D: true
     });
 
     // CONCLUSION 
@@ -95,24 +101,26 @@ document.addEventListener("DOMContentLoaded", (event) => {
     gsap.from(".conclusion .content", {
         scrollTrigger: {
             trigger: "section.conclusion",
-            scrub: true,
+            scrub: 1,
             start: "top 75%",
             end: "50% 50%",
             toggleActions: "play none none reverse"
         },
         autoAlpha: 0,
-        ease: "none"
+        ease: "none",
+        force3D: true
     });
 
     gsap.from(".conclusion", {
         scrollTrigger: {
             trigger: "section.conclusion",
-            scrub: true,
+            scrub: 1,
             start: "top bottom",
             end: "top 25%",
         },
         autoAlpha: 0,
-        ease: "none"
+        ease: "none",
+        force3D: true
     });
 
     // WINDOWS SLIDE IN
@@ -125,15 +133,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
             {
                 autoAlpha: 0,
                 y: 100,
-                webkitFilter: 'blur(8px)',
-                filter: 'blur(8px)',
                 rotationX: 20,
             },
             {
                 autoAlpha: 1,
                 y: 0,
-                webkitFilter: 'blur(0px)',
-                filter: 'blur(0px)',
                 rotationX: 0,
                 duration: 4,
                 ease: "expo.out",
@@ -141,9 +145,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     trigger: chartWindow,
                     start: "top 75%",
                     end: "bottom 60%",
-                    scrub: true,
+                    scrub: 1,
                     toggleActions: "play none none reverse",
-                }
+                },
+                force3D: true
             }
 
         );
@@ -156,16 +161,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             controllerWindow,
             {
                 autoAlpha: 0,
-                X: 100,
-                webkitFilter: 'blur(8px)',
-                filter: 'blur(8px)',
+                x: 100,
                 rotationY: -20,
             },
             {
                 autoAlpha: 1,
                 y: 0,
-                webkitFilter: 'blur(0px)',
-                filter: 'blur(0px)',
                 rotationY: 0,
                 duration: 4,
                 ease: "expo.out",
@@ -173,9 +174,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     trigger: controllerWindow,
                     start: "top bottom",
                     end: "60% 60%",
-                    scrub: true,
+                    scrub: 1,
                     toggleActions: "play none none reverse",
-                }
+                },
+                force3D: true
             }
         );
     });
@@ -253,28 +255,23 @@ document.addEventListener("DOMContentLoaded", (event) => {
         );
         // Démarrer les animations aléatoires juste après que les backElements apparaissent
         heroTl.call(() => {
-            const animateRandom = () => {
-                gsap.to(".stream-stats", {
-                    duration: 3.5,
-                    y: () => gsap.utils.random(-50, 50), // Utiliser une fonction pour une nouvelle valeur aléatoire à chaque cycle
-                    ease: "sine.inOut",
-                    onComplete: animateRandom
-                });
-                gsap.to(".view-stats", {
-                    duration: 3.5,
-                    y: () => gsap.utils.random(-50, 50),
-                    ease: "sine.inOut",
-                    onComplete: animateRandom
-                });
-                gsap.to(".flashes", {
-                    duration: 2,
-                    opacity: () => gsap.utils.random(0.6, 1),
-                    filter: () => gsap.utils.random("blur(12px)", "blur(4px)"),
-                    ease: "sine.inOut",
-                    onComplete: animateRandom
-                });
+            // Optimisation : utiliser repeat avec des valeurs fixes au lieu de fonctions aléatoires à chaque frame
+            const createRandomAnimation = (selector, prop, min, max, duration) => {
+                const animate = () => {
+                    gsap.to(selector, {
+                        duration: duration,
+                        [prop]: gsap.utils.random(min, max),
+                        ease: "sine.inOut",
+                        force3D: true,
+                        onComplete: animate
+                    });
+                };
+                animate();
             };
-            animateRandom();
+            
+            createRandomAnimation(".stream-stats", "y", -50, 50, 3.5);
+            createRandomAnimation(".view-stats", "y", -50, 50, 3.5);
+            createRandomAnimation(".flashes", "opacity", 0.6, 1, 2);
         }, null, "<2");
         heroTl.fromTo("header .scroll-down",
             {
@@ -362,9 +359,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     trigger: triviaCard,
                     start: "top 75%",
                     end: "bottom 25%",
-                    scrub: true,
+                    scrub: 1,
                     toggleActions: "play none none reverse",
-                }
+                },
+                force3D: true
             }
 
         );
@@ -440,7 +438,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
                     start: "top 75%",
                     end: "bottom 25%",
                     toggleActions: "play none none reverse",
-                    scrub: true,
+                    scrub: 1,
                 }
             }
         );
