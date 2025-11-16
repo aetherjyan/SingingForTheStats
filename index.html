@@ -52,7 +52,7 @@
             <img id="stats-up" src="./assets/media/hero/Stats Up.svg" alt="">
         </div>
         <div class="title-wrapper">
-            <h1 class="text-slide-in">L’industrie musicale est-elle en train de devenir performative ?</h1>
+            <h1 class="" data-lg-reveal="fade">L’industrie musicale est-elle en train de devenir performative ?</h1>
         </div>
         <div class="pattern wallpaper"></div>
         <div class="gradient wallpaper"></div>
@@ -186,7 +186,7 @@
                             href="#footer">¹</a></h3>
                     <div class="chart-window slide-in">
                         <p class="window-titlebar" aria-hidden="true">
-                            <span>Music_duration_evolution</span><span>Auguementer les années ou survoler les
+                            <span>duration-evolution_graph</span><span>Auguementer les années et survoler les
                                 points</span>
                         </p>
                         <div class="chart-container">
@@ -253,7 +253,7 @@
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/5oD2Z1OOx1Tmcu2mc9sLY2?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -271,7 +271,7 @@
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/77sb4KLyDEh7123qeCPAi7?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -301,12 +301,20 @@
 
                 <section class="chart">
                     <div class="chart-window">
-                        <span aria-hidden="true" class="window-titlebar">TOTAL_FT_RATIO_EVOLUTION</span>
-
-                        <div id="featuring"></div>
+                        <p class="window-titlebar" aria-hidden="true">
+                            <span>TOTAL-FT-EVOLUTION_WAVEFORM</span><span>Survoler les barres</span>
+                        </p>
+                        <div id="chart-container">
+                            <canvas id="featuring"></canvas>
+                        </div>
                     </div>
-                    <h3>L'évolution du nombre de featurings de 2000 à 2024 dans le Billboard HOT100 <a class="reference"
-                            title="Références et sources dans les mentions légales" href="#footer">⁴</a></h3>
+                    <div class="aside">
+                        <h3>
+                            L'évolution du nombre de featurings dans le Billboard Hot 100 de 2000 à 2024<a
+                                class="reference" title="Références et sources dans les mentions légales"
+                                href="#footer">⁴</a>
+                        </h3>
+                    </div>
                 </section>
 
                 <section class="trivia">
@@ -316,9 +324,11 @@
                             <p class="pill"> Fun Fact</p>
                             <h4>8 858 423 126 vues</h4>
                             <p>“Despacito” de Luis Fonsi, Daddy Yanke et Justin Bieber est la collaboration la plus
-                                grosse de tous les temps. Bien qu'ayant tenu lui aussi 16 semaines au Billboard, le <a href="https://youtu.be/kJQP7kiw5Fk?si=Qb12IQC29_wBWLk0">clip</a>
+                                grosse de tous les temps. Bien qu'ayant tenu lui aussi 16 semaines au Billboard, le <a
+                                    href="https://youtu.be/kJQP7kiw5Fk?si=Qb12IQC29_wBWLk0">clip</a>
                                 accumule les 8 milliards et le total de streams dépasse lui les 2 000 000 000 sur
-                                Spotify. Le <a href="https://youtu.be/72UO0v5ESUo?si=sR3HwL0ph3n-70fP">remix réalisé avec Justin Bieber</a> se rapproche quant à lui des 700 millions
+                                Spotify. Le <a href="https://youtu.be/72UO0v5ESUo?si=sR3HwL0ph3n-70fP">remix réalisé
+                                    avec Justin Bieber</a> se rapproche quant à lui des 700 millions
                                 de vues. La chanson à elle seule aurait générée plus 18,2 millions de dollars grâce aux
                                 revenus YouTube.<a class="reference"
                                     title="Références et sources dans les mentions légales" href="#footer">⁵</a></p>
@@ -327,7 +337,7 @@
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/6habFhsOp2NvshLv26DqMb?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -338,16 +348,19 @@
                             <p>La collaboration entre The Kid Laroi et Justin Bieber sur le tube "STAY" a réussi à
                                 battre un record. En effet, celle-ci est actuellement le featuring le plus écouté sur
                                 Spotify ; en ayant atteint la barre du premier milliard en seulement 118 jours. Ils
-                                restent suivis de près par les Chainsmokers et leurs hits <a href="https://open.spotify.com/intl-fr/track/7BKLCZ1jbUBVqRi2FVlTVw?si=d2d15431364e44fb">"Closer"</a> avec Hasley à 3 480
-                                691 099 écoutes et <a href="https://open.spotify.com/intl-fr/track/6RUKPb4LETWmmr3iAEQktW?si=a4407c5cfd914438">"Something Just Like This"</a> avec Coldplay à 3 406 945 050 écoutes.<a
-                                    class="reference" title="Références et sources dans les mentions légales"
-                                    href="#footer">⁶</a></p>
+                                restent suivis de près par les Chainsmokers et leurs hits <a
+                                    href="https://open.spotify.com/intl-fr/track/7BKLCZ1jbUBVqRi2FVlTVw?si=d2d15431364e44fb">"Closer"</a>
+                                avec Hasley à 3 480
+                                691 099 écoutes et <a
+                                    href="https://open.spotify.com/intl-fr/track/6RUKPb4LETWmmr3iAEQktW?si=a4407c5cfd914438">"Something
+                                    Just Like This"</a> avec Coldplay à 3 406 945 050 écoutes.<a class="reference"
+                                    title="Références et sources dans les mentions légales" href="#footer">⁶</a></p>
                         </div>
                         <div class="preview">
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/5HCyWlXZPP0y6Gqq8TgA20?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -373,7 +386,9 @@
                                     href="https://www.billboard.com/artist/robin-thicke/chart-history/hsi/">Robin
                                     Thicke</a>, Pharell Williams et T.I (12 semaines).
                             </p>
-                            <p>Un autre chiffre record est lui détenu par le titre "Luther" de <a href="https://www.billboard.com/artist/sza/chart-history/bsi/">SZA</a> & Kendric Lamar ; qui
+                            <p>Un autre chiffre record est lui détenu par le titre "Luther" de <a
+                                    href="https://www.billboard.com/artist/sza/chart-history/bsi/">SZA</a> & Kendric
+                                Lamar ; qui
                                 a parvenu à tenir la première place pendant plus de 31 semaines dans le Billboard Hot
                                 R&B / Hip-Hop.<a class="reference"
                                     title="Références et sources dans les mentions légales" href="#footer">⁷</a></p>
@@ -382,12 +397,12 @@
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/2YpeDb67231RjR0MgVLzsG?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/45J4avUb9Ni0bnETYaYFVJ?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -418,24 +433,29 @@
 
                 <!-- === Partie basse (titre + graphique côte à côte) === -->
                 <section class="chart">
-                    <div class="left-side">
+                    <div class="aside">
                         <h3>L’impact de Tiktok sur le Billboard Global 200 (en 2024)<a class="reference"
                                 title="Références et sources dans les mentions légales" href="#footer">⁸</a></h3>
                     </div>
                     <div class="chart-window">
                         <p class="window-titlebar" aria-hidden="true">
-                            <span>AUTOTUNE</span>
-                            <span>AUTOTUNE_THRESHOLD</span>
+                            <span>SOCIAL-TUNE_THRESHOLD</span>
+                            <span>Appuyer sur la molette</span>
                         </p>
                         <figure class="chart-container">
-                            <canvas id="tiktok"></canvas>
-                            <button class="chart-switch">
-                                <img class="scroll-wheel" src="./assets/media/Scroll-wheel.svg" alt="">
-                            </button>
+                            <div class="chart-wrapper">
+                                <canvas id="tiktok"></canvas>
+                                <button class="chart-switch">
+                                    <img class="scroll-wheel" src="./assets/media/Scroll-wheel.svg" alt="">
+                                </button>
+                            </div>
                             <figcaption>
                                 <h4 class="caption-quota big-data">04 %</h4>
-                                <p class="caption-description">des musiques ne sont pas devenues virales.</p>
-                                <p class="caption-legend">Appuyer sur la molette pour changer de donnée.</p>
+                                <p class="caption-description">
+                                    <span class="caption-static">des musiques</span>
+                                    <span class="caption-dynamic">ne sont pas devenues virales.</span>
+                                </p>
+                                <!-- <p class="caption-legend">Appuyer sur la molette pour changer de donnée.</p> -->
                             </figcaption>
                         </figure>
                     </div>
@@ -445,14 +465,17 @@
                 </section>
 
                 <section class="trivia">
-                    <h3 id="" class="trivia-heading">Des chiffres qui donnent le vertige</h3>
+                    <h3 id="" class="trivia-heading">Des chiffres vertigineux</h3>
                     <section class="trivia-card slide-in">
                         <div class="info">
                             <p class="pill">Fun Fact</p>
                             <h4>44,6 millions</h4>
-                            <p>C’est le nombre total de vidéos qui ont utilisées le <a href="https://www.tiktok.com/music/Beat-Automotivo-Tan-Tan-Tan-Viral-7098939394085702406">son TikTok</a> "Beat Automotivo (Tan Tan
+                            <p>C’est le nombre total de vidéos qui ont utilisées le <a
+                                    href="https://www.tiktok.com/music/Beat-Automotivo-Tan-Tan-Tan-Viral-7098939394085702406">son
+                                    TikTok</a> "Beat Automotivo (Tan Tan
                                 Tan Viral)" ; ce qui en fait donc le son TikTok le plus utilisé de tous les temps. Grâce
-                                à cela, la musique originale du titre éponyme au son a pu atteindre 8 millions de streams
+                                à cela, la musique originale du titre éponyme au son a pu atteindre 8 millions de
+                                streams
                                 sur Spotify et 3 millions de vues sur YouTube.<a class="reference"
                                     title="Références et sources dans les mentions légales" href="#footer">⁹</a></p>
                         </div>
@@ -460,7 +483,7 @@
                             <iframe data-testid="embed-iframe" style="border-radius:12px"
                                 src="https://open.spotify.com/embed/track/78TvkItRPxnA5S7Ok2f7Ug?utm_source=generator"
                                 width="100%" height="152" frameBorder="0" allowfullscreen=""
-                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                allow="autoplay; clipboard-write; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
                     </section>
@@ -515,12 +538,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"
         integrity="sha256-SERKgtTty1vsDxll+qzd4Y2cF9swY9BCq62i9wXJ9Uo=" crossorigin="anonymous"></script>
-       
+    <script
+        src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.1.0/dist/chartjs-plugin-annotation.min.js"></script>
     <script src="./scripts/song-duration.js"></script>
     <script src="./scripts/featuring.js"></script>
-
     <script src="./scripts/tiktok.js"></script>
     <script src="./scripts/pop-up.js"></script>
+    <script src="./scripts/navigation.js"></script>
 
 </body>
 

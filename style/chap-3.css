@@ -1,5 +1,9 @@
 /* Ajouter ou ajuster ces styles dans chap-3.css */
 
+#chap-3 .chart {
+    align-items: stretch;
+}
+
 #chap-3 .chart-window {
     display: flex;
     justify-content: center;
@@ -7,26 +11,27 @@
     flex-direction: column;
     position: relative;
     grid-column: 6 / 12;
-    background: var(--Cyan-25);
-    overflow: visible;
+    background: var(--Black-25);
+    height: 100%;
+    min-height: 0;
 }
 
 #chap-3 .window-titlebar {
     border-bottom: 2px solid var(--Black-25);
-    background: var(--Cyan-25);
+    background: var(--Black-50);
     padding: 24px;
-}
+  }
 
-#chap-3 .chart .left-side {
-    grid-column: 2 / 6;  
+#chap-3 .chart .aside {
+    grid-column: 2 / 6;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    height: 100%; 
+    justify-content: center;
 }
 
-#chap-3 #tiktok {
-    aspect-ratio: 1 / 1;
+#chap-3 .chart-wrapper {
+    position: relative;
 }
 
 #chap-3 .chart-switch {
@@ -39,6 +44,12 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    aspect-ratio: 1 / 1;
+    width: 136px;
+    height: 136px;
 }
 
 #chap-3 .scroll-wheel {
@@ -49,39 +60,35 @@
 
 #chap-3 .chart-container {
     flex-direction: column;
-    gap: 16px;
-    padding: 80px;
+    gap: 96px;
+    padding: 64px 64px 48px 64px;
     margin: 0;
     position: relative;
     overflow: visible;
+    box-sizing: border-box;
+    display: flex;
 }
 
 #chap-3 figcaption {
     text-align: center;
     text-wrap: balance;
+    min-height: 120px;
+    flex-shrink: 0;
 }
 
-#chart-caption {
-    /* Positionnement du texte sous le graphique */
-    width: 100%;
-    max-width: 350px; /* Limiter la largeur si besoin */
-    text-align: center;
-    margin: 20px auto 0;
+#chap-3 .caption-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
 }
 
-#caption-quota {
-    /* Style pour le pourcentage */
-    font-family: 'Unbounded', sans-serif;
-    font-size: 48px;
-    font-weight: 900;
-    color: #fff;
-    margin: 0 0 10px 0;
+#chap-3 .caption-legend {
+    font-size: 0.875rem;
+    color: var(--White-50);
+    margin-top: 8px;
 }
 
-#caption-description {
-    /* Style pour la description */
-    font-family: 'Geist Mono', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    margin: 0;
+#chap-3 canvas {
+    aspect-ratio: 1 / 2;
 }

@@ -15,6 +15,8 @@ const chartSwitchButton = document.querySelector(".chart-switch");
 const scrollWheelImg = document.querySelector(".chart-switch .scroll-wheel");
 const captionQuota = document.querySelector(".caption-quota");
 const captionDescription = document.querySelector(".caption-description");
+const captionStatic = document.querySelector(".caption-static");
+const captionDynamic = document.querySelector(".caption-dynamic");
 
 // Charger le JSON
 fetch("./data/tiktokdata.json")
@@ -55,6 +57,7 @@ function createTiktokChart(data, type) {
         LightPink: getCssVar('--Light-Pink', '#FF7DF4'),
 
         White5: getCssVar('--White-5', 'rgba(255,255,255,0.05)'),
+        White12: getCssVar('--White-12', 'rgba(255,255,255,0.12)'),
         Black: getCssVar('--Black', '#23232a'),
         Black50: getCssVar('--Black-50', 'rgba(31,31,38,0.5)'),
         Black25: getCssVar('--Black-25', 'rgba(31,31,38,0.25)'),
@@ -78,16 +81,39 @@ function createTiktokChart(data, type) {
         css.Pink,      // id 3: 84%
     ];
 
+    // Fonction pour obtenir la couleur d'un segment
+    function getSegmentColor(ctx) {
+        if (ctx.type !== 'data') {
+            return;
+        }
+        // Dans le gauge, index 0 = valeur sélectionnée, index 1 = reste
+        if (ctx.index === 0) {
+            // Utiliser la couleur du segment sélectionné basé sur highlightedSegmentIndex
+            const colorIndex = highlightedSegmentIndex >= 0 ? highlightedSegmentIndex : 0;
+            return colors[colorIndex];
+        }
+        // Index 1 = reste, toujours gris clair
+        return css.White12;
+    }
+
+    // Initialiser avec la première donnée pour créer le gauge
+    const initialDataId = dataMap[currentDataIndex];
+    const initialSegmentIndex = data.findIndex(item => item.id === initialDataId);
+    const initialValue = initialSegmentIndex !== -1 ? data[initialSegmentIndex].quota : data[0].quota;
+    const total = 100; // Total pour le gauge (100%)
+
     const tiktokChartData = {
         labels: data.map(row => row.description),
         datasets: [{
             label: 'Répartition des types de buzz du Billboard Global 200 (2024)',
-            data: data.map(row => row.quota),
-            backgroundColor: colors,
+            data: [initialValue, total - initialValue], // [valeur sélectionnée, reste]
+            backgroundColor: function(ctx) {
+                return getSegmentColor(ctx);
+            },
             borderWidth: 0,
             circumference: 180,
             rotation: -90,
-            cutout: '80%',
+            cutout: '75%',
             borderRadius: 8,
         }]
     };
@@ -150,7 +176,8 @@ function createTiktokChart(data, type) {
             
             if (!meta || highlightedSegmentIndex === -1) return;
             
-            const segment = meta.data[highlightedSegmentIndex];
+            // Dans le gauge, le segment sélectionné est toujours à l'index 0
+            const segment = meta.data[0];
             if (!segment || !segment.options) return;
             
             ctx.save();
@@ -181,11 +208,45 @@ function createTiktokChart(data, type) {
         }
     };
 
+    // Annotation pour afficher le contenu au centre (style gauge)
+    const annotation = {
+        type: 'doughnutLabel',
+        content: ({chart}) => {
+            const currentData = tiktokData[highlightedSegmentIndex >= 0 ? highlightedSegmentIndex : 0];
+            if (!currentData) return ['', ''];
+            return [
+                String(currentData.quota).padStart(2, '0') + ' %',
+                currentData.description
+            ];
+        },
+        drawTime: 'beforeDraw',
+        position: {
+            y: '-50%'
+        },
+        font: [
+            {size: 50, weight: 'bold', family: 'Unbounded, sans-serif'},
+            {size: 16, family: 'Geist Mono, monospace'}
+        ],
+        color: ({chart}) => {
+            const currentData = tiktokData[highlightedSegmentIndex >= 0 ? highlightedSegmentIndex : 0];
+            if (!currentData) return ['#fff', '#fff'];
+            const segmentIndex = tiktokData.findIndex(item => item.id === currentData.id);
+            return [colors[segmentIndex] || '#fff', '#fff'];
+        }
+    };
+
     // config 
     const config = {
         type: type,
         data: tiktokChartData,
-        plugins: [glowPlugin],
+        plugins: {
+            glowPlugin: glowPlugin,
+            annotation: {
+                annotations: {
+                    annotation
+                }
+            }
+        },
         options: {
             plugins: {
                 legend: {
@@ -210,32 +271,17 @@ function createTiktokChart(data, type) {
     positionButtonAtCenter();
 }
 
-// Fonction pour positionner le bouton au centre du canvas
+// Fonction pour positionner le bouton en bas et au centre du conteneur
 function positionButtonAtCenter() {
-    if (!TikTokChart || !chartSwitchButton) return;
+    if (!chartSwitchButton) return;
     
-    const canvas = TikTokChart.canvas;
-    const chartArea = TikTokChart.chartArea;
-    const canvasRect = canvas.getBoundingClientRect();
-    const container = canvas.closest('.chart-container');
-    
-    if (!container) return;
-    
-    const containerRect = container.getBoundingClientRect();
-    
-    // Calculer le centre du graphique en coordonnées relatives au canvas
-    const centerXCanvas = chartArea.left + (chartArea.right - chartArea.left) / 2;
-    const centerYCanvas = chartArea.top + (chartArea.bottom - chartArea.top) / 2;
-    
-    // Convertir en coordonnées relatives au conteneur
-    const centerX = centerXCanvas - (canvasRect.left - containerRect.left);
-    const centerY = centerYCanvas - (canvasRect.top - containerRect.top);
-    
-    // Positionner le bouton au centre
-    chartSwitchButton.style.position = 'absolute';
-    chartSwitchButton.style.left = `${centerX}px`;
-    chartSwitchButton.style.top = `${centerY}px`;
-    chartSwitchButton.style.transform = 'translate(-50%, -50%)';
+    // Le CSS gère déjà le positionnement (bottom: 0, left: 50%, transform: translateX(-50%))
+    // On s'assure juste que le transform pour la rotation de l'image ne soit pas écrasé
+    const container = chartSwitchButton.closest('.chart-container');
+    if (container) {
+        // Le transform CSS pour le centrage horizontal est déjà défini dans le CSS
+        // On ne modifie que la rotation de l'image, pas le positionnement du bouton
+    }
 }
 
 // Fonction pour mettre à jour la figcaption
@@ -244,9 +290,26 @@ function updateCaption(segmentIndex) {
     
     const currentData = tiktokData[segmentIndex];
     
-    if (currentData && captionQuota && captionDescription) {
+    if (currentData && captionQuota) {
         captionQuota.textContent = `${String(currentData.quota).padStart(2, '0')} %`;
-        captionDescription.textContent = currentData.description;
+        
+        // Séparer "des musiques" du reste de la description
+        const description = currentData.description;
+        const staticText = "des musiques";
+        let dynamicText = description;
+        
+        // Extraire la partie dynamique (ce qui vient après "des musiques")
+        if (description.startsWith(staticText)) {
+            dynamicText = description.substring(staticText.length).trim();
+        }
+        
+        // Mettre à jour les éléments séparés
+        if (captionStatic) {
+            captionStatic.textContent = staticText;
+        }
+        if (captionDynamic) {
+            captionDynamic.textContent = dynamicText;
+        }
     }
 }
 
@@ -257,32 +320,76 @@ function updateChartHighlight(segmentIndex) {
     // Mettre à jour l'index du segment mis en évidence
     highlightedSegmentIndex = segmentIndex;
     
-    // Redessiner le graphique pour appliquer le glow
-    TikTokChart.draw();
+    // Obtenir la valeur du segment sélectionné
+    const selectedData = tiktokData[segmentIndex];
+    const value = selectedData.quota;
+    const total = 100;
+    
+    // Mettre à jour les données du graphique (style gauge)
+    TikTokChart.data.datasets[0].data = [value, total - value];
+    
+    // Forcer la mise à jour des couleurs en recréant la fonction backgroundColor
+    const getCssVar = (name, fallback = '') => {
+        const v = getComputedStyle(document.documentElement).getPropertyValue(name);
+        return v ? v.trim() : fallback;
+    };
+    const css = {
+        Cyan: getCssVar('--Cyan', '#00E5FF'),
+        Pink: getCssVar('--Pink', '#FF5CF1'),
+        White12: getCssVar('--White-12', 'rgba(255,255,255,0.12)'),
+    };
+    const colors = ['#FFFFFF', css.Cyan, css.Pink];
+    
+    TikTokChart.data.datasets[0].backgroundColor = function(ctx) {
+        if (ctx.type !== 'data') {
+            return;
+        }
+        // Dans le gauge, index 0 = valeur sélectionnée, index 1 = reste
+        if (ctx.index === 0) {
+            return colors[segmentIndex];
+        }
+        return css.White12;
+    };
+    
+    // Redessiner le graphique pour appliquer le glow et l'annotation
+    TikTokChart.update();
     
     // Obtenir l'angle du segment directement depuis Chart.js
+    // Dans le gauge, le segment sélectionné est toujours à l'index 0
     const meta = TikTokChart.getDatasetMeta(0);
-    const segment = meta.data[segmentIndex];
+    const segment = meta.data[0]; // Toujours le premier segment dans le gauge
     
     if (segment && scrollWheelImg) {
-        // Calculer l'angle du milieu du segment (en radians)
-        const middleAngleRad = (segment.startAngle + segment.endAngle) / 2;
+        // Mapping direct entre les valeurs et les angles (0° = scroll-wheel pointant vers le bas)
+        const angleMap = {
+            4: 96,   // 4% → 96°
+            12: 112, // 12% → 112°
+            84: 240  // 84% → 240°
+        };
         
-        // Convertir en degrés CSS
-        let targetAngleDeg = (middleAngleRad * 180) / Math.PI;
+        // Obtenir l'angle cible depuis le mapping
+        const selectedData = tiktokData[segmentIndex];
+        let targetAngleDeg = angleMap[selectedData.quota];
         
-        // Ajuster pour que l'image pointe vers le segment (compenser l'orientation initiale)
-        targetAngleDeg = targetAngleDeg - 90;
-        
-        // Normaliser l'angle entre 0 et 360
-        targetAngleDeg = ((targetAngleDeg % 360) + 360) % 360;
+        // Si l'angle n'est pas dans le mapping, calculer depuis l'extrémité du segment
+        if (targetAngleDeg === undefined) {
+            const { x, y, outerRadius, endAngle } = segment;
+            const endX = x + Math.cos(endAngle) * outerRadius;
+            const endY = y + Math.sin(endAngle) * outerRadius;
+            const angleRad = Math.atan2(endY - y, endX - x);
+            targetAngleDeg = (angleRad * 180) / Math.PI + 90;
+            targetAngleDeg = ((targetAngleDeg % 360) + 360) % 360;
+        }
         
         // Calculer la rotation nécessaire pour aller de la position actuelle à la cible
-        // Toujours dans le sens horaire (rotation positive)
-        let rotationNeeded = targetAngleDeg - (cumulativeRotation % 360);
+        // Calculer l'angle actuel normalisé
+        const currentAngle = cumulativeRotation % 360;
+        let rotationNeeded = targetAngleDeg - currentAngle;
         
-        // Ajuster pour toujours tourner dans le sens horaire
-        if (rotationNeeded < 0) {
+        // Choisir le chemin le plus court (peut être dans le sens horaire ou antihoraire)
+        if (rotationNeeded > 180) {
+            rotationNeeded -= 360;
+        } else if (rotationNeeded < -180) {
             rotationNeeded += 360;
         }
         
@@ -290,14 +397,9 @@ function updateChartHighlight(segmentIndex) {
         cumulativeRotation += rotationNeeded;
         
         // Appliquer la rotation à l'image (pas au bouton)
+        // Le bouton est positionné en bas et au centre via CSS, on ne touche pas à son transform
         scrollWheelImg.style.transform = `rotate(${cumulativeRotation}deg)`;
         scrollWheelImg.style.transition = 'transform 0.5s ease';
-        
-        // S'assurer que le bouton reste centré
-        const container = chartSwitchButton.closest('.chart-container');
-        if (container) {
-            chartSwitchButton.style.transform = 'translate(-50%, -50%)';
-        }
     }
     
     // Mettre à jour la figcaption

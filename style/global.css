@@ -6,7 +6,10 @@
     --Dark-Cyan: #335B68;
     --Dark-Cyan-50: #335b6880;
     --Pink: #FF5CF1;
-    --Light-Pink: #FF7DF4;
+    --Pink-25: rgba(255, 92, 241, 0.25);
+    --Pink-50: rgba(255, 92, 241, 0.5);
+    --Light-Pink: #ff69f2;
+    --Super-Light-Pink: #ffb0f8;
 
     --White: #FFFFFF;
     --White-5: rgba(255, 255, 255, 0.05);
@@ -174,11 +177,12 @@ p {
     line-height: 100%;
 }
 
-/* .chart-window, article,
+.chart-window, .trackhead,
 .controller-window, .intro-window,
-.trackhead, .trivia-card {
-    backdrop-filter: blur(240px);
-} */
+.trivia-card, .popup-overlay {
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
 
 /* POUR TOUS LES CHAPITRES */
 
@@ -234,8 +238,12 @@ p {
 
 /* Fenêtres */
 
-.left-side .right-side {
+.aside {
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-self: stretch stretch;
 }
 
 .chart-window {
@@ -391,7 +399,6 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(24px);
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
@@ -454,7 +461,23 @@ footer {
     height: 48px;
     width: 48px;
     border-radius: 8px;
-    transition: all ease .4s;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(var(--White), var(--Pink));
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    z-index: 0;
 }
 
 .menu a {
@@ -465,13 +488,23 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
     font-size: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.menu li:hover::before,
+.menu li.active::before {
+    opacity: 1;
 }
 
 .menu li:hover {
-    background: radial-gradient(var(--White), var(--Pink));
     box-shadow: 0 0 8px 0 var(--Light-Pink);
+}
+
+.menu li.active {
+    box-shadow: 0 0 12px 0 var(--Light-Pink);
 }
 
 .menu ul {

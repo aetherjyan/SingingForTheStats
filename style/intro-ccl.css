@@ -5,7 +5,7 @@
   background-color: var(--Dark-Cyan-50);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 96px 0 var(--Cyan-25, rgba(0, 238, 255, 0.20));
+  box-shadow: 0 0 240px 0 var(--Super-Light-Pink);
 }
 
 .intro .content {

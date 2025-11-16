@@ -34,6 +34,8 @@ function createSongDurationChart(data, type) {
         DarkCyan50: getCssVar('--Dark-Cyan-50', '#335b6880'),
         Pink: getCssVar('--Pink', '#FF5CF1'),
         LightPink: getCssVar('--Light-Pink', '#FF7DF4'),
+        Pink25: getCssVar('--Pink-25', 'rgba(255,92,241,0.25)'),
+        SuperLightPink: getCssVar('--Super-Light-Pink', '#ffa9f8'),
 
         White5: getCssVar('--White-5', 'rgba(255,255,255,0.05)'),
         Black: getCssVar('--Black', '#23232a'),
@@ -59,12 +61,13 @@ function createSongDurationChart(data, type) {
         datasets: [{
             label: 'Durée de chanson moyenne (secondes)',
             data: data.map((row, i) => i === 0 ? row.duration : null),
-            fill: false,
-            borderColor: css.LightCyan,
+            fill: 'start',
+            backgroundColor: css.Pink25,
+            borderColor: css.SuperLightPink,
             tension: 0.1,
             pointRadius: 2,
             pointHoverRadius: 8,
-            pointBackgroundColor: css.LightCyan,
+            pointBackgroundColor: css.SuperLightPink,
             pointHoverBackgroundColor: '#FFF',
             pointHoverBorderWidth: 0,
         }]
@@ -87,7 +90,7 @@ function createSongDurationChart(data, type) {
                 const meta = chart.getDatasetMeta(idx);
                 if (!meta || !meta.dataset) return;
                 ctx.save();
-                ctx.shadowColor = css.Cyan;
+                ctx.shadowColor = css.Pink;
                 ctx.shadowBlur = 28;
                 meta.dataset.draw(ctx);
                 ctx.restore();

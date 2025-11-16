@@ -143,11 +143,12 @@ a.scroll-down .icon {
     padding-top: 88px;
     border: 1px solid var(--White-25);
     border-radius: 40px 40px 0 0;
-    background: var(--Black-12);
+    background: rgba(31, 31, 38, 0.05);
     box-sizing: border-box;
-    z-index: 3;
+    z-index: 1;
     position: relative;
     width: 100%;
+    transform: translateZ(0);
 }
 
 .trackhead .icons {
@@ -183,15 +184,17 @@ a.scroll-down .icon {
     column-gap: var(--Grid-Gutter);
     top: 0%;
     pointer-events: none;
+    transform: translateZ(0);
 }
 
 .track-channel {
-    border-right: 2px solid var(--white-5, rgba(255, 255, 255, 0.05));
-    border-left: 2px solid var(--white-5, rgba(255, 255, 255, 0.05));
+    border-right: 2px solid var(--Black-5, rgba(255, 255, 255, 0.05));
+    border-left: 2px solid var(--Black-5, rgba(255, 255, 255, 0.05));
     grid-column: span 2;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    mix-blend-mode: multiply;
 }
 
 .track-channel:nth-child(1) {
