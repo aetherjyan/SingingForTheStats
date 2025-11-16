@@ -465,7 +465,6 @@ Promise.all([
                     end: "bottom 50%",
                     toggleActions: "play none none reverse",
                     scrub: 1,
-                    markers: true,
                 }
             }
         );
