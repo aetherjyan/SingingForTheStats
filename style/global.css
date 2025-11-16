@@ -31,7 +31,7 @@
     --Grid-Gutter: 2.5rem;
     --Spacing-S: 3.5rem;
     --Spacing-M: 25svh;
-    --Spacing-L: 37.5svh;
+    --Spacing-L: 18.75svh;
 
     --Heading-Font: 'Unbounded', system-ui, sans-serif;
     --Body-Font: 'Vercetti', system-ui, sans-serif;
@@ -131,29 +131,33 @@ body {
 }
 
 main {
-    background: linear-gradient(180deg, var(--Cyan) 0%, var(--Light-Cyan) 5%, var(--Cyan) 15%, var(--Dark-Cyan) 50%, var(--Dark-Cyan) 65%, var(--Light-Pink) 100%);
     padding: 0px 2rem;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-}
-
-article {
-    background: var(--Black-50);
-    width: 100%;
-    max-width: 1320px;
-    border-radius: 40px 40px 0 0;
-    position: relative;
-    z-index: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--Spacing-L);
+    overflow: hidden;
+    position: relative;
+}
+
+article {
+    width: 100%;
+    max-width: 1376px;
+    border-radius: 40px 40px 0 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: var(--Spacing-L); */
     border-top: 2px solid var(--White-12);
     border-left: 2px solid var(--White-12);
     border-right: 2px solid var(--White-12);
     box-sizing: border-box;
     box-shadow: 0 48px 64px 0 var(--Black-12);
+}
+
+article > section {
+    padding: var(--Spacing-L) 0;
 }
 
 p {
@@ -179,9 +183,9 @@ p {
 
 .chart-window, .trackhead,
 .controller-window, .intro-window,
-.trivia-card, .popup-overlay {
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
+.trivia-card, .popup-overlay, .track-bg {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
 
 /* POUR TOUS LES CHAPITRES */
@@ -250,6 +254,7 @@ p {
     overflow: hidden;
     border-radius: 16px;
     box-sizing: border-box;
+    transform-origin: top center;
 }
 
 .chart canvas {
@@ -257,11 +262,15 @@ p {
     width: 100%;
     flex: 1 1 auto;
 }
+.chart {
+    perspective: 850px;
+}
 
 .controller-window {
     overflow: hidden;
     border-radius: 16px;
     box-sizing: border-box;
+    transform-origin: top center;
 }
 
 /* Barre de titre de fenêtre */
@@ -448,7 +457,7 @@ footer {
     padding: 4px;
     gap: 8px;
     position: fixed;
-    z-index: 1000;
+    z-index: 100;
     right: 16px;
     bottom: 16px;
 }
@@ -477,7 +486,6 @@ footer {
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
-    z-index: 0;
 }
 
 .menu a {
@@ -491,7 +499,6 @@ footer {
     transition: color 0.3s ease;
     font-size: 0.75rem;
     position: relative;
-    z-index: 1;
 }
 
 .menu li:hover::before,

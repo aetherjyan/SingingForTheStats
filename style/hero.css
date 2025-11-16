@@ -1,5 +1,17 @@
 /* == HERO == */
 
+/* Dans hero.css */
+.gradient.wallpaper,
+.pattern.wallpaper,
+.stats-up,
+.stream-stats,
+.view-stats,
+.stats-wave,
+.front,
+.flashes {
+    will-change: opacity; /* Préparer le navigateur pour l'animation */
+}
+
 header {
     width: 100dvw;
     height: 112.5dvh;
@@ -15,25 +27,36 @@ header h1 {
 
 .title-wrapper {
     max-width: 832px;
-    width: 80%;
+    width: 58.3333333%;
     top: 96px;
     left: 50%;
     transform: translateX(-50%);
     position: fixed;
-    z-index: -1;
+    z-index: -4;
 }
 
 .wallpaper {
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: -2;
     top: 0;
     pointer-events: none;
 }
 
-.gradient.wallpaper {
+.pattern.wallpaper {
+    background: url('../assets/media/hero/Star Pattern.svg') repeat;
+    background-size: 16px;
+    opacity: 0.1;
+    mix-blend-mode: soft-light;
+}
+
+.hero .gradient.wallpaper {
     background: linear-gradient(180deg, var(--Cyan, #0EF) 0%, var(--Pink, #FF5CF1) 100%);
+    z-index: -6;
+}
+
+.hero .pattern.wallpaper {
+    z-index: -5;
 }
 
 a.scroll-down {
@@ -48,7 +71,7 @@ a.scroll-down {
     bottom: 128px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 1;
     opacity: .8;
     transition: all ease-in-out .3s;
     font-size: 0.875rem;
@@ -71,40 +94,41 @@ a.scroll-down .icon {
     stroke-width: 2px;
 }
 
-#stats-up {
+.hero .stats-up {
     position: absolute;
     bottom: 0;
     top: 50%;
     transform: translateY(-50%);
+    z-index: -4;
 }
 
-#stream-stats {
+.hero .stream-stats {
     position: absolute;
     top: 480px;
     right: 153px;
     animation-delay: 3s;
-    z-index: 0;
+    z-index: -4;
 }
 
-#view-stats {
+.hero .view-stats {
     position: absolute;
     top: 240px;
     left: 115px;
     animation-delay: 1s;
-    z-index: 0;
+    z-index: -4;
 }
 
-#stats-wave {
+.hero .stats-wave {
     width: 100%;
     position: absolute;
-    z-index: 1;
+    z-index: -3;
     object-fit: contain;
     bottom: 0;
 }
 
-#front {
+.hero .front {
     position: absolute;
-    z-index: 2;
+    z-index: -2;
     bottom: 32px;
     left: 50%;
     transform: translateX(-50%);
@@ -115,22 +139,23 @@ a.scroll-down .icon {
     mask-image: linear-gradient(black 75%, transparent);
 }
 
-#flashes {
+.hero .flashes {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 4;
+    z-index: -2;
     object-fit: cover;
     top: 0;
     animation: Flashing 2s ease-in-out infinite alternate;
 }
 
 .hero {
+    position: relative;
     overflow: hidden;
     height: 100%;
-    background: url('../assets/media/hero/Star Pattern.svg') repeat;
-    background-size: 48px;
     pointer-events: none;
+    /* -webkit-mask-image: linear-gradient(black 97.5%, transparent); */
+    /* mask-image: linear-gradient(black 97.5%, transparent); */
 }
 
 /* == FOND PISTES AUDIO == */
@@ -143,12 +168,12 @@ a.scroll-down .icon {
     padding-top: 88px;
     border: 1px solid var(--White-25);
     border-radius: 40px 40px 0 0;
-    background: rgba(31, 31, 38, 0.05);
+    background: var(--Black-5);
     box-sizing: border-box;
-    z-index: 1;
     position: relative;
     width: 100%;
     transform: translateZ(0);
+    margin-bottom: var(--Spacing-L);
 }
 
 .trackhead .icons {
@@ -185,6 +210,7 @@ a.scroll-down .icon {
     top: 0%;
     pointer-events: none;
     transform: translateZ(0);
+    border-radius: 40px 40px 0 0;
 }
 
 .track-channel {
@@ -201,30 +227,35 @@ a.scroll-down .icon {
     grid-column: 2 / 4;
 }
 
-/* ANIMATION */
-
-@keyframes Flashing {
-    from {
-        opacity: 0.6;
-        filter: blur(12px);
-    }
-
-    to {
-        opacity: 1;
-        filter: blur(4px);
-    }
+main .pattern.wallpaper {
+    position: fixed;
+    width: 100svw;
+    height: 100svh;
+    -webkit-mask-image: linear-gradient(194deg, rgba(0, 0, 0, 0.00) 23.05%, #000 50%, rgba(0, 0, 0, 0.00) 76.95%);
+    mask-image: linear-gradient(194deg, rgba(0, 0, 0, 0.00) 23.05%, #000 50%, rgba(0, 0, 0, 0.00) 76.95%);
+    background-size: 16px;
+    opacity: 0.25;
+    z-index: -7;
 }
 
-@keyframes MoveUpDown {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(15%);
-  }
+main .gradient.wallpaper {
+    background: linear-gradient(180deg, var(--Cyan) 0%, var(--Light-Cyan) 5%, #009BAC 15%, var(--Dark-Cyan) 50%, var(--Dark-Cyan) 65%, var(--Light-Pink) 100%);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -8;
 }
 
-.moveupdown {
-    animation: MoveUpDown 8s ease-in-out infinite alternate;
+main .blur-panel {
+    position: absolute;
+    top: 0;
+    background: var(--Black-12);
+    z-index: -6;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    max-width: 1376px;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px 40px 0 0;
 }

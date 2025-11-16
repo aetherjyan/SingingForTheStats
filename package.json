@@ -1,0 +1,20 @@
+{
+  "name": "singingforthestats",
+  "version": "1.0.0",
+  "description": "Projet scolaire de MMI 2 de visualisation de données sur la performativité de l'industrie musicale. ## Crédits - Thomas PANG - Designer & Développeur - Amal AZIZI - Designeuse & Développeuse - Kelly M-Moussoki - Designeuse & Développeuse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aetherjyan/SingingForTheStats.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aetherjyan/SingingForTheStats/issues"
+  },
+  "homepage": "https://github.com/aetherjyan/SingingForTheStats#readme"
+}

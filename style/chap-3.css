@@ -48,12 +48,12 @@
     left: 50%;
     transform: translate(-50%, 50%);
     aspect-ratio: 1 / 1;
-    width: 136px;
-    height: 136px;
+    width: 160px;
+    height: 160px;
 }
 
 #chap-3 .scroll-wheel {
-    width: 136px;
+    width: 100%;
     aspect-ratio: 1 / 1;
     display: block;
 }
@@ -89,6 +89,16 @@
     margin-top: 8px;
 }
 
-#chap-3 canvas {
-    aspect-ratio: 1 / 2;
+#chap-3 .chart-wrapper {
+    aspect-ratio: 2 / 1;
+    width: 100%;
+}
+
+#chap-3 .trivia-card {
+    grid-column: 4 / span 6;
+}
+
+#chap-3 .trivia h3 {
+    grid-column: 4 / span 6;
+    text-align: center;
 }

@@ -86,7 +86,7 @@ fetch('./data/feat.json')
         labels: years,
         datasets: [{
           label: 'Total des featurings',
-          data: values,
+          data: new Array(values.length).fill(0), // Commencer à 0 pour l'animation
           backgroundColor: 'transparent', // Transparent car le plugin dessine les barres
           borderColor: 'transparent',
           borderWidth: 0,
@@ -100,12 +100,9 @@ fetch('./data/feat.json')
         responsive: true,
         maintainAspectRatio: false,
         animation: {
-          // Désactiver l'animation initiale, elle sera activée via Intersection Observer
+          // Désactiver l'animation initiale, elle sera activée via ScrollTrigger
           duration: 0,
           delay: () => 0,
-          onComplete: () => {
-            animationTriggered = true;
-          }
         },
         transitions: {
           active: { animation: { duration: 0 } },
@@ -180,6 +177,8 @@ fetch('./data/feat.json')
           },
           y: {
             beginAtZero: true,
+            min: 0,
+            max: Math.max(...values) * 1.1, // Fixer le max à 110% de la valeur maximale pour un peu d'espace
             grid: {
               display: false
             },
@@ -206,61 +205,75 @@ fetch('./data/feat.json')
     });
 
     // Fonction pour déclencher l'animation avec stagger
-    const triggerAnimation = () => {
-      if (animationTriggered) return; // Ne déclencher qu'une seule fois
+    const triggerChartAnimation = () => {
+      if (animationTriggered) return;
+      animationTriggered = true;
 
-      // Mettre à jour les options d'animation avec delay/stagger
+      // Activer l'animation pour Chart.js
       chart.options.animation = {
-        duration: 800,
-        easing: 'easeOutQuart',
-        delay: (context) => {
-          let delay = 0;
-          if (context.type === 'data' && context.mode === 'default' && !animationTriggered) {
-            delay = context.dataIndex * 80; // Stagger de 80ms entre chaque barre
-          }
-          return delay;
-        },
-        onComplete: () => {
-          animationTriggered = true;
-        }
+        duration: 1200,
+        easing: 'easeOutCubic',
       };
 
-      // Réinitialiser les données à 0 pour l'animation
-      const originalData = [...values];
-      const meta = chart.getDatasetMeta(0);
+      // Créer un tableau de données animées (commence à 0)
+      const animatedData = new Array(values.length).fill(0);
+      chart.data.datasets[0].data = animatedData;
+      chart.update('none');
 
-      // Réinitialiser chaque barre individuellement
-      meta.data.forEach((element, index) => {
-        if (element) {
-          element.y = element.base; // Positionner en bas pour l'animation vers le haut
-        }
-      });
-
-      // Réinitialiser les données du dataset
-      chart.data.datasets[0].data = new Array(values.length).fill(0);
-      chart.update('none'); // Mise à jour sans animation
-
-      // Restaurer les données originales et déclencher l'animation
-      chart.data.datasets[0].data = originalData;
-      chart.update('active'); // Mise à jour avec animation
+      // Animer chaque barre individuellement avec GSAP
+      if (typeof gsap !== 'undefined') {
+        values.forEach((targetValue, index) => {
+          // Créer un objet pour suivre la valeur animée
+          const progress = { value: 0 };
+          
+          gsap.to(progress, {
+            value: 1,
+            duration: 1.2,
+            delay: index * 0.08, // Stagger de 80ms entre chaque barre
+            ease: "power2.out",
+            onUpdate: () => {
+              // Mettre à jour la valeur de cette barre spécifique
+              animatedData[index] = targetValue * progress.value;
+              chart.data.datasets[0].data = [...animatedData];
+              chart.update('none'); // Mise à jour sans animation pour un contrôle précis
+            }
+          });
+        });
+      } else {
+        // Fallback : animation simple sans stagger
+        chart.data.datasets[0].data = values;
+        chart.update('active');
+      }
     };
 
-    // Intersection Observer pour détecter quand le graphique est dans le viewport
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !animationTriggered) {
-          triggerAnimation();
-          observer.unobserve(entry.target); // Arrêter d'observer après l'animation
+    // S'assurer que GSAP est disponible avant d'utiliser ScrollTrigger
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      // Utiliser GSAP ScrollTrigger pour déclencher l'animation quand le graphique entre dans le viewport
+      gsap.fromTo(canvas,
+        { autoAlpha: 0 },
+        {
+          autoAlpha: 1,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: canvas.closest('.chart-window') || canvas,
+            start: "top 75%",
+            onEnter: () => triggerChartAnimation(),
+          }
         }
-      });
-    }, {
-      threshold: 0.2 // Déclencher quand 20% du graphique est visible
-    });
-
-    // Observer le conteneur du canvas
-    const chartContainer = canvas.closest('.chart-window') || canvas.parentElement;
-    if (chartContainer) {
-      observer.observe(chartContainer);
+      );
+    } else {
+      // Fallback : utiliser Intersection Observer si GSAP n'est pas disponible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animationTriggered) {
+            triggerChartAnimation();
+            observer.unobserve(entry.target);
+            toggleActions: "play none none reverse"
+          }
+        });
+      }, { threshold: 0.25 });
+      
+      observer.observe(canvas);
     }
   })
   .catch(error => console.error('Erreur lors du chargement des données:', error));
