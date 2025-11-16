@@ -20,6 +20,23 @@
     <link rel="stylesheet" href="./style/intro-ccl.css">
     <link rel="shortcut icon" type="image/png" href="assets/media/logo/Favicon.png">
     <link rel="shortcut icon" type="image/svg+xml" href="/assets/media/logo/Favicon.svg">
+    <!-- Prévenir le FOUC -->
+    <style>
+        body:not(.loaded) {
+            opacity: 0;
+            visibility: hidden;
+            overflow: hidden;
+        }
+        body.loaded {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease-in;
+        }
+    </style>
+    <script>
+        // Retirer la classe no-js immédiatement pour éviter le FOUC si JS est activé
+        document.documentElement.classList.remove('no-js');
+    </script>
 </head>
 
 <body>

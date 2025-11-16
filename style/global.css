@@ -130,6 +130,12 @@ body {
     overflow-x: hidden;
 }
 
+/* Prévenir le FOUC : masquer le contenu si JavaScript est désactivé */
+body.no-js {
+    opacity: 1;
+    visibility: visible;
+}
+
 main {
     padding: 0px 2rem;
     display: flex;
