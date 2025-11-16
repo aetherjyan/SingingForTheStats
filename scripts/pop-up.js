@@ -1,6 +1,7 @@
 const mentionsLégales = document.querySelector(".popup-mentions")
 
 mentionsLégales.addEventListener('click', () => {
+
     // Création de l'overlay
     const overlay = document.createElement('div');
     overlay.classList.add('popup-overlay');
@@ -8,11 +9,6 @@ mentionsLégales.addEventListener('click', () => {
     // Création du popup
     const popup = document.createElement('div');
     popup.classList.add('popup');
-
-    // Bouton de fermeture
-    const closeBtn = document.createElement('button');
-    closeBtn.classList.add('popup-close');
-    closeBtn.innerHTML = '<p><b>FERMER</b></p>>';
 
     // Contenu du popup (tu peux personnaliser selon le projet)
     popup.innerHTML = `
@@ -114,20 +110,17 @@ mentionsLégales.addEventListener('click', () => {
         </div>
       `;
 
-    // On ajoute le bouton de fermeture au popup
-    popup.appendChild(closeBtn);
+// Ajout au DOM
     overlay.appendChild(popup);
     document.body.appendChild(overlay);
 
-    // Fermeture du popup au clic sur le bouton
-    closeBtn.addEventListener('click', () => {
+    // Fermeture via la croix
+    popup.querySelector(".close-popup").addEventListener("click", () => {
         overlay.remove();
     });
 
-    // Fermeture si on clique à l’extérieur du popup
+    // Fermeture en cliquant en dehors
     overlay.addEventListener('click', e => {
-        if (e.target === overlay) {
-            overlay.remove();
-        }
+        if (e.target === overlay) overlay.remove();
     });
 });
