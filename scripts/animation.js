@@ -17,18 +17,37 @@ Promise.all([
     // ===== LENIS SMOOTH SCROLL INTEGRATION =====
 
     const lenis = new Lenis({
-        // Désactiver le scroll initialement jusqu'à ce que l'animation hero soit terminée
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    // Bloquer le scroll initialement
-    lenis.stop();
+    // Vérifier si l'utilisateur a déjà scrollé au-delà du hero
+    const header = document.querySelector('header');
+    const headerHeight = header ? header.offsetHeight : window.innerHeight * 1.125; // 112.5dvh
+    const currentScroll = window.scrollY || window.pageYOffset;
+    const hasScrolledPastHero = currentScroll > headerHeight;
     
-    // Bloquer aussi le scroll natif du navigateur
-    document.body.style.overflow = 'hidden';
+    // Si l'utilisateur a déjà scrollé au-delà du hero, ne pas bloquer le scroll
+    // Sinon, réinitialiser le scroll à 0 et bloquer jusqu'à la fin de l'animation
+    let shouldBlockScroll = !hasScrolledPastHero;
+    
+    if (shouldBlockScroll) {
+        // Réinitialiser le scroll à 0 pour une expérience cohérente
+        window.scrollTo(0, 0);
+        lenis.scrollTo(0, { immediate: true });
+        
+        // Bloquer le scroll initialement
+        lenis.stop();
+        
+        // Bloquer aussi le scroll natif du navigateur
+        document.body.style.overflow = 'hidden';
+    } else {
+        // L'utilisateur a déjà scrollé, ne pas bloquer et ne pas jouer l'animation hero complète
+        lenis.start();
+        document.body.style.overflow = '';
+    }
 
     gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
@@ -205,7 +224,35 @@ Promise.all([
 
     // HERO
 
-    document.fonts.ready.then(() => {
+    // Si l'utilisateur a déjà scrollé au-delà du hero, ne pas jouer l'animation complète
+    if (!shouldBlockScroll) {
+        // Animation rapide sans blocage du scroll - définir les états finaux immédiatement
+        gsap.set("header .gradient.wallpaper", { opacity: 1 });
+        gsap.set("header .pattern.wallpaper", { opacity: 0.1 });
+        gsap.set(".front, .flashes", { opacity: 1 });
+        gsap.set(".stats-wave", { opacity: 1, y: 0 });
+        gsap.set(".stats-up,.stream-stats,.view-stats", { opacity: 1 });
+        gsap.set("header .scroll-down", { autoAlpha: 1 });
+        
+        // Démarrer les animations aléatoires même si on saute l'animation hero
+        const createRandomAnimation = (selector, prop, min, max, duration) => {
+            const animate = () => {
+                gsap.to(selector, {
+                    duration: duration,
+                    [prop]: gsap.utils.random(min, max),
+                    ease: "sine.inOut",
+                    force3D: true,
+                    onComplete: animate
+                });
+            };
+            animate();
+        };
+        
+        createRandomAnimation(".stream-stats", "y", -50, 50, 3.5);
+        createRandomAnimation(".view-stats", "y", -50, 50, 3.5);
+        createRandomAnimation(".flashes", "opacity", 0.6, 1, 2);
+    } else {
+        // Jouer l'animation hero complète
         let split;
 
         let heroTl = gsap.timeline(
@@ -213,11 +260,6 @@ Promise.all([
                 defaults: {
                     duration: 2,
                     ease: "power2.out",
-                },
-                onComplete: () => {
-                    // Réactiver le scroll une fois l'animation hero terminée
-                    lenis.start();
-                    document.body.style.overflow = '';
                 }
             }
 
@@ -299,6 +341,13 @@ Promise.all([
             createRandomAnimation(".view-stats", "y", -50, 50, 3.5);
             createRandomAnimation(".flashes", "opacity", 0.6, 1, 2);
         }, null, "<2");
+        // Débloquer le scroll quand l'animation du scroll-down commence
+        heroTl.call(() => {
+            // Réactiver le scroll au début de l'animation du scroll-down
+            lenis.start();
+            document.body.style.overflow = '';
+        }, null, 4);
+        
         heroTl.fromTo("header .scroll-down",
             {
                 autoAlpha: 0,
@@ -329,7 +378,7 @@ Promise.all([
                 return split;
             }
         });
-    });
+    }
 
 
     // Title hide
