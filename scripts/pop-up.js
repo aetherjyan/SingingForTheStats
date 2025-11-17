@@ -30,8 +30,10 @@ mentionsLégales.addEventListener('click', () => {
     <p>Réalisation : Amal AZIZI, Thomas PANG, Kelly MAKAYA--MOUSSOKI <br>Année universitaire : 2025–2026
     </p>
     <h3>Données personnelles</h3>
-    <p> Ce site ne collecte aucune donnée personnelle. Aucune information concernant les visiteurs n’est
-        enregistrée, partagée ou utilisée à des fins d’analyse, de suivi ou de communication.
+    <p> Ce site collecte les données nécessaires uniquement et n'utilise aucunes données personnelles sans le consentement explicite du visiteur. 
+    <br>Les données collectées sont strictement sécurisées et conservées pour la durée nécessaire à la finalité du projet. 
+    <br>Aucune information concernant les visiteurs n’est enregistrée, partagée ou utilisée à des fins d’analyse, de suivi ou de communication. Aucune donnée n'est partagée avec des tiers à des fins commerciales.
+    
     </p>
 
     
@@ -39,21 +41,27 @@ mentionsLégales.addEventListener('click', () => {
 <ul>
     <li>Raison sociale : Université Gustave Eiffel</li>
     <li>Forme sociale : Établissement Public à caractère Scientifique, Culturel et Professionnel (EPSCP)</li>
-    <li>Numéro SIRET : 13002612300013</li>
+    <li>Numéro SIRET : 130 026 123 00013</li>
     <li>Adresse physique du siège social : CAMPUS DE MARNE-LA-VALLEE 5 BOULEVARD DESCARTES 77420 CHAMPS-SUR-MARNE.</li>
-    <li>Téléphone : 01 60 95 75 00</li>
+    <li>Téléphone :<a href="tel:01 60 95 75 00">01 60 95 75 00</a></li>
+    <li>Code APE : 85.422</li>
+    <li>Directeur de la publication : Gilles Roussel</li>
 </ul>
 
-<ul>Déléguée à la Protection des Données de l'Université Gustave Eiffel (DPO - RGPD)
+<h3>Déléguée à la Protection des Données de l'Université Gustave Eiffel (DPO - RGPD)</h3>
+<ul>
     <li>Véronique juge </li>
-    <li>protectiondesdonnees-dpo@univ-eiffel.fr</li>
-    <li>+33 (0)1 60 95 75 00</li>
+    <li><a href="mailto:protectiondesdonnees-dpo@univ-eiffel.fr">protectiondesdonnees-dpo@univ-eiffel.fr</a></li>
+    <li><a href="tel:01 60 95 75 00">01 60 95 75 00</a></li>
     <li>77454 Marne-la-Vallée cedex 2</li>
+    <li>Conformément à la loi Informatique et Libertés et du Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier en contactant le DPO : <a href="mailto:protectiondesdonnees-dpo@univ-eiffel.fr">protectiondesdonnees-dpo@univ-eiffel.fr</a>.</li>
 </ul>
 <h3>L'hébergeur</h3>
 <ul>
-    <li>Raison sociale : Université Gustave Eiffel</li>
-    <li>Adresse physique du siège social : CAMPUS DE MARNE-LA-VALLEE 5 BOULEVARD DESCARTES 77420 CHAMPS-SUR-MARNE. </li>
+    <li>GitHub</li>
+    <li>Adresse physique du siège social : Boulevard Prins Bernhardplein 20 - Amsterdam 1097 JB - Pays-Bas </li>
+    <li>Site web : <a href="https://pages.github.com/">https://pages.github.com/</a></li>
+    <li>Politique de conservation des données de GitHub : GitHub conserve les données tant que nécessaire pour fournir ses services, respecter les obligations légales ou résoudre des litiges. Les dépôts publics sont conservés indéfiniment, sauf suppression, tandis que les dépôts privés sont protégés. Les utilisateurs peuvent demander la suppression ou modification de leurs données.</li>
 </ul>
 
 

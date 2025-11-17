@@ -453,6 +453,10 @@ footer {
     background: #555;
     border-radius: 10px;
 }
+.popup-content::-webkit-scrollbar-thumb:hover {
+    background: #979797;
+    border-radius: 10px;
+}
 .close-popup {
     position: absolute;
     top: 25px;
