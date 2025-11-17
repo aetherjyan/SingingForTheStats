@@ -478,6 +478,9 @@ footer {
     padding: 30px;
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
+.popup-mentions {
+    cursor: pointer;
+}
 
 
 
