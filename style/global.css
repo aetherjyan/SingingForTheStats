@@ -371,6 +371,11 @@ footer {
     align-items: end;
     padding: 80px;
     width: 100%;
+    color: var(--Black);
+}
+
+footer > * {
+    color: inherit;
 }
 
 /* Logo à gauche */
